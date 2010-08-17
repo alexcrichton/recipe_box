@@ -37,6 +37,12 @@ module Recipes
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
+    
+    Sass::Plugin.options[:template_location] = 'app/stylesheets'
+    
+    config.generators do |g|
+      g.test_framework :rspec
+    end
   end
 end

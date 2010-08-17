@@ -46,4 +46,24 @@ Recipes::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  Paste::Glue.config.serve_assets     = true
+  Sass::Plugin.options[:cache]        = false
+  Sass::Plugin.options[:css_location] = 'tmp/stylesheets'
+
+  config.to_prepare do
+    Sass::Plugin.update_stylesheets
+  end
+  
+  config.app_middleware.insert_before Rack::Runtime,
+      ::Rack::Static, 
+      :urls => ['/stylesheets'], 
+      :root => Rails.root.join('tmp').to_s
+  
+  config.fb_secret = ENV['FACEBOOK_SECRET']
+  config.fb_app_id = ENV['FACEBOOK_APP_ID']
+  
+  config.action_mailer.default_url_options = {
+    :host => 'recipes.alexcrichton.com'
+  }
 end
