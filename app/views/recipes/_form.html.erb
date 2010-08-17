@@ -2,6 +2,15 @@
   <%= render 'shared/error_messages', :target => @recipe %>
 
   <dl>
+    <dt>Ingredients</dt>
+
+    <%= f.fields_for :ingredents do |f2| %>
+      <dd><%= f2.text_field :quantity %></dd>
+      <dd><%= f2.text_field :name %></dd>
+    <% end %>
+
+    <dt><%= f.label :directions %></dt>
+    <dd><%= f.text_area :directions %></dd>
   </dl>
 
   <div class="actions">
