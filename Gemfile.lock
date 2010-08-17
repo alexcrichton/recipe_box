@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/alexcrichton/paste.git
+  revision: 6954606
+  specs:
+    paste (0.1.1)
+      activesupport (>= 3.0.0.beta4)
+      paste
+      sprockets
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -50,10 +59,6 @@ GEM
       hashie
       rest-client
     nokogiri (1.4.3.1)
-    paste (0.1.1)
-      activesupport (>= 3.0.0.beta4)
-      paste
-      sprockets
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -112,7 +117,7 @@ DEPENDENCIES
   haml
   json
   mini_fb
-  paste
+  paste!
   pg
   rails (= 3.0.0.rc)
   rspec-rails (>= 2.0.0.beta.17)
