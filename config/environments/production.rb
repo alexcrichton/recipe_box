@@ -56,6 +56,8 @@ Recipes::Application.configure do
     Sass::Plugin.update_stylesheets
   end
   
+  ActionView::Helpers::AssetTagHelper.cache_asset_timestamps = false
+  
   config.app_middleware.insert_before Rack::Runtime,
       ::Rack::Static, 
       :urls => ['/stylesheets'], 
