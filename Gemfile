@@ -21,5 +21,4 @@ group :test do
   gem 'spork'
 end
 
-
-
+gem 'cancan'
