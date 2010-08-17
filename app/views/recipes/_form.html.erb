@@ -1,15 +1,8 @@
-<%= form_for(@recipe) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+<%= form_for @recipe do |f| %>
+  <%= render 'shared/error_messages', :target => @recipe %>
 
-      <ul>
-      <% @recipe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <dl>
+  </dl>
 
   <div class="actions">
     <%= f.submit %>
