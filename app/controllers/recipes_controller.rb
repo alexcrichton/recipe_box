@@ -36,4 +36,5 @@ class RecipesController < ApplicationController
 
     respond_with @recipe
   end
+
 end

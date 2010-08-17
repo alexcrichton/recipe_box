@@ -14,12 +14,4 @@ class ApplicationController < ActionController::Base
   def current_user= user
     session[:fb_uid] = user.try :fb_uid
   end
-  
-  def require_user
-    unless current_user
-      flash[:error] = 'Need to be logged in!'
-
-      redirect_to new_login_path
-    end
-  end
 end
