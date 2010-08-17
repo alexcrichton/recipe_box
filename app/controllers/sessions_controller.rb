@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       @access_token = access_token_hash['access_token']
 
       @res = MiniFB.get(@access_token, 'me')
-    
+
       if User.exists? :fb_uid => @res['id']
         @user = User.find_by_fb_uid @res['id']
       else
