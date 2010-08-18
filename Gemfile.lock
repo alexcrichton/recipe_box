@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/alexcrichton/paste.git
-  revision: 6954606
+  revision: c2ed213
   specs:
-    paste (0.1.1)
+    paste (0.2.1)
       activesupport (>= 3.0.0.beta4)
+      closure-compiler
       paste
       sprockets
 
@@ -43,6 +44,7 @@ GEM
     builder (2.1.2)
     bullet (2.0.0.rc1)
     cancan (1.3.2)
+    closure-compiler (0.3.2)
     configuration (1.1.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)

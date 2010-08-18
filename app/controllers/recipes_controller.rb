@@ -6,6 +6,14 @@ class RecipesController < ApplicationController
   def index
     respond_with @recipes = Recipe.all
   end
+  
+  def search
+    @recipes = Recipe.search params[:q]
+
+    respond_with @recipes do |format|
+      format.html { render :action => 'index' }
+    end
+  end
 
   def show
     respond_with @recipe

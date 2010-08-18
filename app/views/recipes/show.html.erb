@@ -1,5 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @recipe.name %></h2>
 
+<dl>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <dt><%= ingredient.quantity %></dt>
+    <dd><%= ingredient.name %></dd>
+  <% end %>
+</dl>
+
+<%= markdown @recipe.directions %>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

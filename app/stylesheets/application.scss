@@ -1,3 +1,5 @@
+@import "errors";
+
 body {
   background-color: #4B7399;
   font-family: Verdana, Helvetica, Arial;
@@ -74,4 +76,30 @@ a {
   }
 }
 
+
+dl { 
+  margin: 5px 0; 
+
+  dt {
+    width: 12em;
+    float: left;
+    clear: left;
+    text-align: right;
+    color: #333;
+
+  	.field_with_errors {
+  	  margin: 0;
+  	  padding: 0;
+	  }
+  }
+
+  dd {
+  	margin-left: 12.5em;
+  	
+  	.field_with_errors {
+  	  margin: 0;
+  	  padding: 0;
+	  }
+  }
+}
 
