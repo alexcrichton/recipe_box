@@ -12,6 +12,7 @@ gem 'json' # required by mini_fb
 gem 'will_paginate', '>= 3.0.pre'
 
 group :development, :test do
+  gem 'heroku'
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails', '>=2.0.0.beta.17'
 
