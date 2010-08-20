@@ -6,5 +6,5 @@ Recipes::Application.routes.draw do
     end
   end
 
-  root :to => 'recipes#index'
+  root :to => 'recipes#box'
 end

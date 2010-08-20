@@ -14,6 +14,12 @@ class RecipesController < ApplicationController
       format.html { render :action => 'index' }
     end
   end
+  
+  def box
+    respond_to do |format|
+      format.html { render :layout => 'box' }
+    end
+  end
 
   def show
     respond_with @recipe

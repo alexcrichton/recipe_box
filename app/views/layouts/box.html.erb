@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || 'Untitled' %></title>
+    <%= paste_css_tags 'application', 'box' %>
+    <%= paste_js_tags %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
