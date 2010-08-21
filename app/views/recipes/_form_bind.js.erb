@@ -5,11 +5,24 @@ $('#ingredients a.add').live('click', function() {
   html.find('.ingredient:text').autocomplete(
     '/recipes/ingredient_search');
 
+  html.find('.quantity').focus();
   return false;
 });
 
 $('#ingredients .close').live('click', function() {
   $(this).parents('.ingredient').hide().find('.remove').val('1');  
+});
+
+$('#ingredients input[type=text]').live('keydown', function(e) {
+  if (e.keyCode == 13) { // enter key
+    var $parent = $(e.srcElement).parents('div.ingredient');
+
+    if ($parent.next().length == 0) {
+      $('#ingredients a').click();
+      return false;
+    }
+  }
+  return true;
 });
 
 
@@ -19,7 +32,6 @@ var bindForm = function($el) {
     '/recipes/category_search');
   $el.find('.ingredient:text').autocomplete(
     '/recipes/ingredient_search');
-
 
   $el.ajaxForm({
     beforeSubmit: function(ignored, $form) {

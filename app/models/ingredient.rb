@@ -1,7 +1,7 @@
 class Ingredient < ActiveRecord::Base
   belongs_to :recipe
 
-  validates_presence_of :name, :quantity
+  validates_presence_of :name
   after_save :parse_quantity
 
   scope :search, lambda { |query| 
