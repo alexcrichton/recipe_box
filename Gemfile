@@ -9,7 +9,7 @@ gem 'bluecloth'
 gem 'mini_fb'
 gem 'json' # required by mini_fb
 gem 'units'
-gem 'will_paginate'#, :git => 'git://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
+gem 'will_paginate', '>= 3.0.pre' #, :git => 'git://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 
 # gem 'pdfkit'
 
