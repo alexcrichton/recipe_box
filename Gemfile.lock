@@ -1,20 +1,3 @@
-GIT
-  remote: git://github.com/alexcrichton/paste.git
-  revision: c2ed213
-  specs:
-    paste (0.2.1)
-      activesupport (>= 3.0.0.beta4)
-      closure-compiler
-      paste
-      sprockets
-
-GIT
-  remote: git://github.com/huerlisi/will_paginate.git
-  revision: 75c4a10
-  branch: rails3
-  specs:
-    will_paginate (3.0.pre2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -65,6 +48,11 @@ GEM
     mini_fb (1.1.3)
       hashie
       rest-client
+    paste (0.2.1)
+      activesupport (>= 3.0.0.beta4)
+      closure-compiler
+      paste
+      sprockets
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -95,6 +83,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.22)
     units (1.0.1)
+    will_paginate (2.3.14)
 
 PLATFORMS
   ruby
@@ -105,9 +94,9 @@ DEPENDENCIES
   haml
   json
   mini_fb
-  paste!
+  paste
   pg
   rails (= 3.0.0.rc)
   sqlite3-ruby
   units
-  will_paginate!
+  will_paginate
