@@ -10,7 +10,7 @@ Recipes::Application.configure do
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  # config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
@@ -55,17 +55,17 @@ Recipes::Application.configure do
   config.to_prepare do
     Sass::Plugin.update_stylesheets
   end
-  
+
   ActionView::Helpers::AssetTagHelper.cache_asset_timestamps = false
   
   config.app_middleware.insert_before Rack::Runtime,
       ::Rack::Static, 
       :urls => ['/stylesheets'], 
       :root => Rails.root.join('tmp').to_s
-  
+
   config.fb_secret = ENV['FACEBOOK_SECRET']
   config.fb_app_id = ENV['FACEBOOK_APP_ID']
-  
+
   config.action_mailer.default_url_options = {
     :host => 'recipes.alexcrichton.com'
   }
