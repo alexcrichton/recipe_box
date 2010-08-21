@@ -2,6 +2,11 @@ body {
   background: none;
 }
 
+html {
+  background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(darken(#b5cdcf, 10%)), to(white));
+  background-repeat: repeat-x;
+}
+
 $imgwidth: 278px;
 $imgheight: 370px;
 $width: 800px;
@@ -9,6 +14,7 @@ $width: 800px;
 #container {
   padding: 0;
   border: none;
+  background: none;
   position: relative;
   background-image: url(/images/recipeboxsmall.png);
   background-size: $imgwidth $imgheight;
@@ -35,28 +41,37 @@ $width: 800px;
   left: 50px;
   top: 50px;
   z-index: 11;
+  opacity: 1;
+  -webkit-transform: rotate(0);
 }
 
 @mixin card-start {
   left: 285px;
   top: 275px;
   height: 150px;
-  width: 200px;
-  opacity: 0.3;
+  width: 180px;
+  opacity: 0;
+  z-index: 0;
   -webkit-transform: rotate(-4deg);
 }
 
-@-webkit-keyframes pulse {
+@mixin card-mid {
+  left: 285px;
+  top: 80px;
+  height: 150px;
+  width: 200px;
+  z-index: 11;
+  opacity: 1;
+  -webkit-transform: rotate(15deg);
+}
+
+@-webkit-keyframes card1 {
   0% {
     @include card-start;
   }
 
   33% {
-    left: 285px;
-    top: 120px;
-    height: 150px;
-    width: 200px;
-    -webkit-transform: rotate(10deg);
+    @include card-mid;
   }
 
   100% {
@@ -64,15 +79,69 @@ $width: 800px;
   }
 }
 
+@-webkit-keyframes card2 {
+  0% {
+    @include card-end;
+  }
+
+  66% {
+    @include card-mid;
+  }
+
+  100% {
+    @include card-start;
+  }
+}
+
 #card {
   position: absolute;
   background: white;
   border: 4px solid #e8c881;
+  display: none;
+  overflow: hidden;
 
-  @include card-end;
+  & > .close {
+    display: block;
+    float: right;
+    background-image: url(/images/close_button.gif);
+    height: 30px;
+    width: 30px;
+    text-indent: -9999px;
+  }
 
-  -webkit-animation-name: pulse;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-direction: alternate;
-  -webkit-animation-timing-function: ease-in-out;
+  &.start {
+    display: block;
+    @include card-end;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: card1;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+  }
+
+  &.end {
+    display: block;
+    @include card-start;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: card2;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+
+  .search #q {
+    display: block;
+    font-size: 2em;
+    width: 80%;
+    margin: 0 auto;
+    clear: both;
+  }
+  
+  #results {
+    .recipe {
+      font-size: 1.6em;
+    }
+  }
 }

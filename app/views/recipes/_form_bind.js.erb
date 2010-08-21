@@ -1,0 +1,42 @@
+var bindForm = function($el) {
+  $el.find('a.add').live('click', function() {
+    var html = $('#new-ingredient').html();
+    html = html.replace(/REPLACE_ME/g, new Date().getTime().toString());
+    $('#ingredients').append(html);
+
+    return false;
+  });
+
+  $el.find(':checkbox').live('click', function() {
+    $(this).parents('dd').fadeOut().prev().fadeOut();
+  });
+
+  $el.find('#category select').select_autocomplete();
+
+  $el.find('#category a').live('click', function() {
+    $('.new-category').fadeIn();
+    $(this).parents('.select-category').fadeOut();
+    return false;
+  });
+
+  $el.ajaxForm({
+    beforeSubmit: function(ignored, $form) {
+      var submit = $form.find(':submit').hide();
+      $(
+        "<%= escape_javascript image_tag('ajax-small.gif') %>"
+      ).insertAfter(submit);
+    },
+
+    success: function(data, a, b, $form) {
+      data = $(data);
+      if (data.find('#errorExplanation').length > 0) {
+        $('#card .content').html(data);
+        bindForm($('#card form'));
+      } else {
+        $('#card .close').click();
+      }
+    }
+  });
+};
+
+bindForm($('form'));

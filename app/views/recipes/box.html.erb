@@ -1,7 +1,14 @@
+<% javascript 'box', 'rails', 'jquery/select_autocomplete', 'jquery/form' %>
+<% css 'recipes/form' %>
+
 <div id='buttons'>
-  <%= link_to 'Add recipe', '#' %>
-  <%= link_to 'Search recipes', '#' %>
+  <%= link_to 'Add recipe', new_recipe_path(:format => 'js'), :remote => true %>
+  <%= link_to 'Search recipes', recipes_path(:format => 'js'), :remote => true %>
 </div>
 
 <div id='card'>
+  <%= link_to 'go back', '#', :class => 'close' %>
+
+  <div class='content'>
+  </div>
 </div>
