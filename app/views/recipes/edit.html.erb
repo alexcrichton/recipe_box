@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @recipe, :remote => 'true' %> |
-<%= link_to 'All Recipes', recipes_path, :remote => 'true' %>
+<div id='bottom-links'>
+  <%= link_to 'Show', @recipe, :remote => 'true' %> |
+  <%= link_to 'All Recipes', recipes_path, :remote => 'true' %>
+</div>

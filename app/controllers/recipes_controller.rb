@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @recipes = Recipe.paginate(:page => params[:page], :per_page => 10)
+    @recipes = Recipe.paginate(:page => params[:page], :per_page => 4)
 
     respond_with @recipes
   end

@@ -1,28 +1,25 @@
+$('#ingredients a.add').live('click', function() {
+  var html = $('#new-ingredient').html();
+  html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
+  $('#ingredients').append(html);
+  html.find('.ingredient:text').autocomplete(
+    '/recipes/ingredient_search');
+
+  return false;
+});
+
+$('#ingredients .close').live('click', function() {
+  $(this).parents('.ingredient').hide().find('.remove').val('1');  
+});
+
+
 var bindForm = function($el) {
-  $el.find('a.add').live('click', function() {
-    var html = $('#new-ingredient').html();
-    html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
-    $('#ingredients').append(html);
-    html.find('.ingredient:text').autocomplete(
-      '/recipes/ingredient_search');
-
-    return false;
-  });
-
-  $el.find(':checkbox').live('click', function() {
-    $(this).parents('dd').fadeOut().prev().fadeOut();
-  });
 
   $el.find('#recipe_category_attributes_name').autocomplete(
     '/recipes/category_search');
   $el.find('.ingredient:text').autocomplete(
     '/recipes/ingredient_search');
 
-  $el.find('#category a').live('click', function() {
-    $('.new-category').fadeIn();
-    $(this).parents('.select-category').fadeOut();
-    return false;
-  });
 
   $el.ajaxForm({
     beforeSubmit: function(ignored, $form) {
@@ -34,11 +31,9 @@ var bindForm = function($el) {
 
     success: function(data, a, b, $form) {
       data = $(data);
+      $('#card .content').html(data);
       if (data.find('#errorExplanation').length > 0) {
-        $('#card .content').html(data);
         bindForm($('#card form'));
-      } else {
-        $('#card .close').click();
       }
     }
   });

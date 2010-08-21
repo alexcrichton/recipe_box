@@ -1,34 +1,3 @@
-<h1>Listing recipes</h1>
+<%= render @recipes %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Recipe', new_recipe_path %>
-
-
-<div>
-  <h2>Search</h2>
-  <%= form_tag search_recipes_path do %>
-    <div>
-      <%= text_field_tag :q, params[:q] %>
-      <%= submit_tag 'Search' %>
-    </div>
-  <% end %>
-</div>
+<%= will_paginate @recipes %>

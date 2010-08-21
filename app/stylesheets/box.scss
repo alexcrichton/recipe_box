@@ -1,3 +1,11 @@
+a {
+  color: #966f32;
+  
+  &:hover {
+    color: lighten(#966f32, 10%);
+  }
+}
+
 @font-face { 
   font-family: ReenieBeanie; 
   src: url(/fonts/ReenieBeanie.ttf); 
@@ -89,8 +97,6 @@ $width: 800px;
 }
 
 @mixin card-end {
-  width: 700px;
-  height: 535px;
   left: 50px;
   top: 50px;
   z-index: 11;
@@ -99,23 +105,20 @@ $width: 800px;
 }
 
 @mixin card-start {
-  left: 285px;
-  top: 275px;
-  height: 150px;
-  width: 180px;
+  left: 25px;
+  top: 75px;
   opacity: 0;
   z-index: 0;
-  -webkit-transform: rotate(-4deg);
+
+  -webkit-transform: scale(0.27) rotate(-4deg);
 }
 
 @mixin card-mid {
-  left: 285px;
-  top: 80px;
-  height: 150px;
-  width: 200px;
+  left: 115px;
+  top: -70px;
   z-index: 11;
   opacity: 1;
-  -webkit-transform: rotate(15deg);
+  -webkit-transform: scale(0.3) rotate(15deg);
 }
 
 @-webkit-keyframes card1 {
@@ -123,7 +126,7 @@ $width: 800px;
     @include card-start;
   }
 
-  33% {
+  40% {
     @include card-mid;
   }
 
@@ -137,7 +140,7 @@ $width: 800px;
     @include card-end;
   }
 
-  66% {
+  50% {
     @include card-mid;
   }
 
@@ -151,6 +154,9 @@ $width: 800px;
   background: white;
   border: 4px solid #e8c881;
   display: none;
+  width: 700px;
+  height: 535px;
+
   overflow: hidden;
 
   & > .close {
@@ -165,7 +171,7 @@ $width: 800px;
   &.start {
     display: block;
     @include card-end;
-    -webkit-animation-duration: 1.5s;
+    -webkit-animation-duration: 1s;
     -webkit-animation-name: card1;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: ease-in-out;
@@ -174,7 +180,7 @@ $width: 800px;
   &.end {
     display: block;
     @include card-start;
-    -webkit-animation-duration: 1.5s;
+    -webkit-animation-duration: 1s;
     -webkit-animation-name: card2;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: ease-in-out;
@@ -197,4 +203,14 @@ $width: 800px;
       font-size: 1.6em;
     }
   }
+}
+
+#bottom-links {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+h2 a {
+  text-decoration: none;
 }

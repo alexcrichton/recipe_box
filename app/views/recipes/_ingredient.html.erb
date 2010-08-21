@@ -1,8 +1,10 @@
-<dt><%= f.text_field :quantity, :placeholder => 'Quantity' %></dt>
-<dd>
+<div class='ingredient'>
+  <div class='close'>
+    X
+  </div>
+  <%= f.text_field :quantity, :placeholder => 'Quantity', :class => 'quantity' %>
   <%= f.text_field :name, :placeholder => 'Name', :class => 'ingredient' %>
   <% unless f.object.new_record? %>
-    <%= f.check_box :_destroy %>
-    Remove
+    <%= f.hidden_field :_destroy, :class => 'remove' %>
   <% end %>
-</dd>
+</div>

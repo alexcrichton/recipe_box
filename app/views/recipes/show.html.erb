@@ -1,13 +1,20 @@
-<h2><%= @recipe.name %></h2>
+<h2>
+  <%= @recipe.name %> <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
+</h2>
 
-<dl>
+<ul>
   <% @recipe.ingredients.each do |ingredient| %>
-    <dt><%= ingredient.quantity %></dt>
-    <dd><%= ingredient.name %></dd>
+    <li>
+      <%= ingredient.quantity %> &mdash;
+      <%= ingredient.name %>
+    </li>
   <% end %>
-</dl>
+</ul>
 
 <%= markdown @recipe.directions %>
 
-<%= link_to 'Edit', [:edit, @recipe], :remote => true %>
-<%= link_to 'All Recipes', recipes_path, :remote => true %>
+
+<div id='bottom-links'>
+  <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
+  <%= link_to 'All Recipes', recipes_path, :remote => true %>
+</div>

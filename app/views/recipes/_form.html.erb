@@ -15,20 +15,18 @@
       <% end %>
     </dl>
 
-    <dl id='ingredients'>
-      <dt>Ingredients</dt>
-      <dd><%= link_to 'add', '#', :class => 'add' %></dd>
+    <div>
+      <%= f.label :directions %><br/>
+      <%= f.text_area :directions %>
+    </div>
+  </div>
+  <div class='col2' id='ingredients'>
+      <h4>Ingredients <%= link_to 'add', '#', :class => 'add' %></h4>
 
       <%= f.fields_for :ingredients do |f2| %>
         <%= render 'ingredient', :f => f2 %>
       <% end %>
     </dl>
-  </div>
-  <div class='col2'>
-    <div>
-      <%= f.label :directions %><br/>
-      <%= f.text_area :directions %>
-    </div>
   </div>
 
   <div style='display:none' id='new-ingredient'>
