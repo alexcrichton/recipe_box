@@ -58,13 +58,14 @@ class RecipesController < ApplicationController
   end
 
   def category_search
-    @categories = Category.search(params[:q]).limit(params[:limit])
+    @categories = Category.search(params[:q]).limit(params[:limit]).group :name
 
     render :text => @categories.map(&:name).join("\n")
   end
 
   def ingredient_search
-    @ingredients = Ingredient.search(params[:q]).limit(params[:limit])
+    @ingredients = Ingredient.search(params[:q]).limit(params[:limit]).
+        group(:name)
 
     render :text => @ingredients.map(&:name).join("\n")
   end
