@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) || "Untitled" %></title>
-    <%= paste_css_tags 'application' %>
+    <title><%= yield(:title) || 'Untitled' %></title>
+    <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <%= paste_css_tags %>
     <%= paste_js_tags %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>

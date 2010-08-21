@@ -2,18 +2,19 @@ class RecipesController < ApplicationController
 
   before_filter :set_category_id, :only => [:update, :create]
 
-  load_and_authorize_resource
+  load_and_authorize_resource :find_by => :slug
 
   respond_to :html, :js
 
   def index
-    @recipes = Recipe.paginate(:page => params[:page], :per_page => 4)
+    @recipes = Recipe.paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes
   end
   
   def search
-    @recipes = Recipe.search params[:q]
+    @recipes = Recipe.search(params[:q]).paginate :page => params[:page],
+        :per_page => 10
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
@@ -58,7 +59,7 @@ class RecipesController < ApplicationController
 
   def category_search
     @categories = Category.search(params[:q]).limit(params[:limit])
-    
+
     render :text => @categories.map(&:name).join("\n")
   end
 
@@ -67,7 +68,7 @@ class RecipesController < ApplicationController
 
     render :text => @ingredients.map(&:name).join("\n")
   end
-  
+
   protected
   
   def set_category_id

@@ -103,3 +103,25 @@ dl {
   }
 }
 
+@media print {
+  body {
+    background-color: #FFF;
+  }
+
+  #container {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  h2.recipe {
+    a {
+      display: none;
+    }
+  }
+
+  #bottom-links {
+    display: none;
+  }
+}

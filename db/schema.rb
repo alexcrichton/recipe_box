@@ -10,13 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818233711) do
+ActiveRecord::Schema.define(:version => 20100821084722) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["name"], :name => "index_categories_on_name"
 
   create_table "ingredients", :force => true do |t|
     t.string   "quantity"
@@ -27,13 +29,21 @@ ActiveRecord::Schema.define(:version => 20100818233711) do
     t.string   "parsed_quantity"
   end
 
+  add_index "ingredients", ["name"], :name => "index_ingredients_on_name"
+  add_index "ingredients", ["recipe_id"], :name => "index_ingredients_on_recipe_id"
+
   create_table "recipes", :force => true do |t|
     t.text     "directions"
     t.string   "name"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "recipes", ["category_id"], :name => "index_recipes_on_category_id"
+  add_index "recipes", ["name"], :name => "index_recipes_on_name"
+  add_index "recipes", ["slug"], :name => "index_recipes_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.integer  "fb_uid"

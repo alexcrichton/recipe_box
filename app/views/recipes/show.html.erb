@@ -1,4 +1,4 @@
-<h2>
+<h2 class='recipe'>
   <%= @recipe.name %> <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
 </h2>
 
@@ -13,8 +13,8 @@
 
 <%= markdown @recipe.directions %>
 
-
 <div id='bottom-links'>
+  <%= link_to 'Download', recipe_path(@recipe, :format => 'pdf') %> |
   <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
   <%= link_to 'All Recipes', recipes_path, :remote => true %>
 </div>

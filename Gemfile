@@ -11,6 +11,8 @@ gem 'json' # required by mini_fb
 gem 'units'
 gem 'will_paginate', :git => 'git://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 
+gem 'pdfkit'
+
 group :development, :test do
   gem 'heroku'
   gem 'sqlite3-ruby', :require => 'sqlite3'
