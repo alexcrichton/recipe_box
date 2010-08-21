@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
 
+  before_filter :set_category_id, :only => [:update, :create]
+
   load_and_authorize_resource
 
   respond_to :html, :js
@@ -54,4 +56,27 @@ class RecipesController < ApplicationController
     respond_with @recipe
   end
 
+  def category_search
+    @categories = Category.search(params[:q]).limit(params[:limit])
+    
+    render :text => @categories.map(&:name).join("\n")
+  end
+
+  def ingredient_search
+    @ingredients = Ingredient.search(params[:q]).limit(params[:limit])
+
+    render :text => @ingredients.map(&:name).join("\n")
+  end
+  
+  protected
+  
+  def set_category_id
+    name = params[:recipe][:category_attributes][:name]
+    category = Category.find_by_name(name)
+
+    if category
+      params[:recipe].delete(:category_attributes)
+      params[:recipe][:category_id] = category.id
+    end
+  end
 end

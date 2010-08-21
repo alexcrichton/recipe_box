@@ -5,24 +5,15 @@
   <%= render 'shared/error_messages', :target => @recipe %>
 
   <div class='col1'>
-    <div>
-      <%= f.label :name %><br/>
-      <%= f.text_field :name %>
-    </div>
-  
-    <fieldset id='category'>
-      <legend>Category</legend>
-      <div class='select-category'>
-        <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] } %>
-        or <%= link_to 'new category', '#' %>
-      </div>
-      <div class='new-category'>
-        <%= f.fields_for :category, Category.new do |f2| %>
-          <%= f2.label :name %>
-          <%= f2.text_field :name %>
-        <% end %>
-      </div>
-    </fieldset>
+    <dl id='recipe'>
+      <dt><%= f.label :name %></dt>
+      <dd><%= f.text_field :name %></dd>
+
+      <%= f.fields_for :category, @recipe.category || Category.new do |f2| %>
+        <dt><%= f2.label :name, 'Category' %></dt>
+        <dd><%= f2.text_field :name %></dd>
+      <% end %>
+    </dl>
 
     <dl id='ingredients'>
       <dt>Ingredients</dt>

@@ -3,6 +3,8 @@ Recipes::Application.routes.draw do
     collection do
       post 'search'
       get 'search(/:q)' => 'recipes#search', :as => 'search'
+      get :category_search
+      get :ingredient_search
     end
   end
 

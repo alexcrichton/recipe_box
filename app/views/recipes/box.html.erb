@@ -1,11 +1,12 @@
-<% javascript 'box', 'rails', 'jquery/select_autocomplete', 'jquery/form' %>
+<% javascript 'box', 'rails', 'jquery/select_autocomplete', 'jquery/form',
+      'pagination' %>
 <% css 'recipes/form' %>
 
 <div id='buttons'>
   <%= link_to content_tag(:span, 'Add recipe'), 
-        new_recipe_path(:format => 'js'), :remote => true, :class => 'add' %>
+        new_recipe_path, :remote => true, :class => 'add' %>
   <%= link_to content_tag(:span, 'Search'), 
-        recipes_path(:format => 'js'), :remote => true, :class => 'search' %>
+        recipes_path, :remote => true, :class => 'search' %>
 </div>
 
 <div id='card'>

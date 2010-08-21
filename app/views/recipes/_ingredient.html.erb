@@ -1,6 +1,6 @@
 <dt><%= f.text_field :quantity, :placeholder => 'Quantity' %></dt>
 <dd>
-  <%= f.text_field :name, :placeholder => 'Name' %>
+  <%= f.text_field :name, :placeholder => 'Name', :class => 'ingredient' %>
   <% unless f.object.new_record? %>
     <%= f.check_box :_destroy %>
     Remove

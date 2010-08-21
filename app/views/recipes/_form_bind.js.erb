@@ -1,8 +1,10 @@
 var bindForm = function($el) {
   $el.find('a.add').live('click', function() {
     var html = $('#new-ingredient').html();
-    html = html.replace(/REPLACE_ME/g, new Date().getTime().toString());
+    html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
     $('#ingredients').append(html);
+    html.find('.ingredient:text').autocomplete(
+      '/recipes/ingredient_search');
 
     return false;
   });
@@ -11,7 +13,10 @@ var bindForm = function($el) {
     $(this).parents('dd').fadeOut().prev().fadeOut();
   });
 
-  $el.find('#category select').select_autocomplete();
+  $el.find('#recipe_category_attributes_name').autocomplete(
+    '/recipes/category_search');
+  $el.find('.ingredient:text').autocomplete(
+    '/recipes/ingredient_search');
 
   $el.find('#category a').live('click', function() {
     $('.new-category').fadeIn();

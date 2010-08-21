@@ -2,6 +2,16 @@
   display: none;
 }
 
+#recipe {
+  dt {
+    width: 50px;
+  }
+  
+  dd {
+    margin-left: 80px;
+  }
+}
+
 .col1 {
   float: left;
   width: 45%;

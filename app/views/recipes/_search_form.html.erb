@@ -4,5 +4,8 @@
   <% end %>
 </div>
 
-<div id='results'>
+<div id='results' class='pagination-container'>
+  <%= paginated_section @recipes do %>
+    <%= render @recipes %>
+  <% end %>
 </div>
