@@ -1,3 +1,8 @@
+@font-face { 
+  font-family: ReenieBeanie; 
+  src: url(/fonts/ReenieBeanie.ttf); 
+}
+
 body {
   background: none;
 }
@@ -7,8 +12,8 @@ html {
   background-repeat: repeat-x;
 }
 
-$imgwidth: 278px;
-$imgheight: 370px;
+$imgwidth: 392px;
+$imgheight: 397px;
 $width: 800px;
 
 #container {
@@ -16,11 +21,11 @@ $width: 800px;
   border: none;
   background: none;
   position: relative;
-  background-image: url(/images/recipeboxsmall.png);
+  background-image: url(/images/recipeboxfinal.png);
   background-size: $imgwidth $imgheight;
   background-repeat: no-repeat;
   min-height: $imgheight + 100px;
-  background-position: 250px 100px;
+  background-position: 155px 96px;
   width: $width;
 }
 
@@ -33,6 +38,54 @@ $width: 800px;
   width: 200px;
   
   z-index: 10;
+  
+  font-family: ReenieBeanie;
+  font-size: 23px;
+  font-weight: bold;
+
+  .add, .search {
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+
+    span {
+      background: white;
+      display: inline-block;
+    }
+  }
+
+  .add {
+    left: 0;
+    top: 0;
+
+    background-image: url(/images/tape1.png);
+    width: 133px;
+    height: 62px;
+    
+    span {
+      padding: 3px 5px;
+      margin: 20px;
+      -webkit-transform: rotate(-2deg);
+    }
+  }
+  
+  .search {
+    bottom: 0;
+    right: 0;
+    
+    background-image: url(/images/tape2.png);
+    width: 125px;
+    height: 48px;
+    
+    span {
+/*      padding: 3px;*/
+      margin: 10px 12px;
+      width: 92px;
+      font-size: 120%;
+      text-align: center;
+      -webkit-transform: rotate(-1deg);
+    }
+  }
 }
 
 @mixin card-end {
@@ -112,7 +165,7 @@ $width: 800px;
   &.start {
     display: block;
     @include card-end;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.5s;
     -webkit-animation-name: card1;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: ease-in-out;
@@ -121,7 +174,7 @@ $width: 800px;
   &.end {
     display: block;
     @include card-start;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.5s;
     -webkit-animation-name: card2;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: ease-in-out;

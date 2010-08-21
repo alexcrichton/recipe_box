@@ -5,7 +5,9 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
   def index
-    respond_with @recipes = Recipe.all
+    @recipes = Recipe.paginate(:page => params[:page], :per_page => 10)
+
+    respond_with @recipes
   end
   
   def search

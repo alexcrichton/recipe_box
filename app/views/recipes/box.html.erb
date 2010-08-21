@@ -2,8 +2,10 @@
 <% css 'recipes/form' %>
 
 <div id='buttons'>
-  <%= link_to 'Add recipe', new_recipe_path(:format => 'js'), :remote => true %>
-  <%= link_to 'Search recipes', recipes_path(:format => 'js'), :remote => true %>
+  <%= link_to content_tag(:span, 'Add recipe'), 
+        new_recipe_path(:format => 'js'), :remote => true, :class => 'add' %>
+  <%= link_to content_tag(:span, 'Search'), 
+        recipes_path(:format => 'js'), :remote => true, :class => 'search' %>
 </div>
 
 <div id='card'>
