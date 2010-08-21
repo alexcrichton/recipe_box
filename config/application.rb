@@ -48,7 +48,9 @@ module Recipes
     config.to_prepare do
       require 'units/standard'
     end
-    
-    config.middleware.use PDFKit::Middleware, :print_media_type => true
+
+    if defined?(PDFKit)
+      config.middleware.use PDFKit::Middleware, :print_media_type => true
+    end
   end
 end
