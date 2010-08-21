@@ -1,6 +1,8 @@
+require 'rbconfig'
+
 if defined?(PDFKit)
   PDFKit.configure do |config|
-    if Rails.env.development?
+    if RbConfig::CONFIG['host_os'] =~ /darwin/
       config.wkhtmltopdf = Rails.root.join('vendor', 'wkhtmltopdf-osx').to_s
     else
       config.wkhtmltopdf = Rails.root.join('vendor', 'wkhtmltopdf-amd64').to_s
