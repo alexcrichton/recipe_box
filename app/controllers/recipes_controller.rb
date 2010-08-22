@@ -7,14 +7,15 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @recipes = Recipe.order(:name).paginate(:page => params[:page], :per_page => 10)
+    @recipes = Recipe.order(:name).
+        paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes
   end
   
   def search
-    @recipes = Recipe.search(params[:q]).paginate(:page => params[:page],
-        :per_page => 10).order(:name)
+    @recipes = Recipe.search(params[:q]).order(:name).
+        paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
