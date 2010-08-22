@@ -7,14 +7,14 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @recipes = Recipe.paginate(:page => params[:page], :per_page => 10)
+    @recipes = Recipe.order(:name).paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes
   end
   
   def search
-    @recipes = Recipe.search(params[:q]).paginate :page => params[:page],
-        :per_page => 10
+    @recipes = Recipe.search(params[:q]).paginate(:page => params[:page],
+        :per_page => 10).order(:name)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
@@ -54,7 +54,9 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
 
-    respond_with @recipe
+    respond_with @recipe do |format|
+      format.js { redirect_to :action => 'index' }
+    end
   end
 
   def category_search

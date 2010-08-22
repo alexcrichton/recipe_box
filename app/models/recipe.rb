@@ -18,7 +18,7 @@ class Recipe < ActiveRecord::Base
       joins(:ingredients, :category).where('categories.name LIKE :q ' +
         'OR ingredients.name LIKE :q OR recipes.name LIKE :q',
         :q => "%#{query}%"
-      )
+      ).group('recipes.id')
     end
   }
 
