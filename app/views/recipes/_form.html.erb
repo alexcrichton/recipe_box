@@ -23,6 +23,10 @@
   <div class='col2' id='ingredients'>
       <h4>Ingredients <%= link_to 'add', '#', :class => 'add' %></h4>
 
+      <dl>
+        <dt>Quantity</dt>
+        <dd>Name</dd>
+      </dl>
       <%= f.fields_for :ingredients do |f2| %>
         <%= render 'ingredient', :f => f2 %>
       <% end %>

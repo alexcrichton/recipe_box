@@ -2,8 +2,8 @@
   <div class='close'>
     X
   </div>
-  <%= f.text_field :quantity, :placeholder => 'Quantity', :class => 'quantity' %>
-  <%= f.text_field :name, :placeholder => 'Name', :class => 'ingredient' %>
+  <%= f.text_field :quantity, :class => 'quantity' %>
+  <%= f.text_field :name, :class => 'ingredient' %>
   <% unless f.object.new_record? %>
     <%= f.hidden_field :_destroy, :class => 'remove' %>
   <% end %>
