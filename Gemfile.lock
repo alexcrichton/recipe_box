@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alexcrichton/paste.git
-  revision: 11cf18d
+  revision: 16d28b9
   specs:
     paste (0.2.1)
       activesupport (>= 3.0.0.beta4)

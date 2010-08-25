@@ -49,6 +49,7 @@ BdayRecipes::Application.configure do
   config.active_support.deprecation = :notify
 
   Paste::Glue.config.serve_assets     = true
+  Paste::CSS.config.no_cache          = true
   Sass::Plugin.options[:cache]        = false
   Sass::Plugin.options[:css_location] = 'tmp/stylesheets'
   Sass::Plugin.options[:style]        = :compressed
