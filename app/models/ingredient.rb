@@ -14,22 +14,25 @@ class Ingredient < ActiveRecord::Base
 
   def parsed_quantity
     Marshal.load self[:parsed_quantity]
+  rescue
+    nil
   end
   
   protected
   
   def parse_quantity
-    return if quantity.blank?
-    quantity, unit = self[:quantity].split ' '
-
-    quantity = Rational(*(quantity.split('/').map(&:to_i))).to_f
-
-    parsed_quantity = begin
-      quantity.send unit.gsub(/\W/, '')
-    rescue NoMethodError
-      nil
-    end
-    
-    self[:parsed_quantity] = Marshal.dump parsed_quantity
+    # TODO: get this working again
+    # return if quantity.blank?
+    # quantity, unit = self[:quantity].split ' '
+    # 
+    # quantity = Rational(*(quantity.split('/').map(&:to_i))).to_f
+    # 
+    # parsed_quantity = begin
+    #   quantity.send unit.gsub(/\W/, '')
+    # rescue NoMethodError
+    #   nil
+    # end
+    # 
+    # self[:parsed_quantity] = Marshal.dump parsed_quantity
   end
 end
