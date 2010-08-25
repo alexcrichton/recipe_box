@@ -14,6 +14,7 @@ gem 'pdfkit'
 
 group :development, :test do
   gem 'heroku'
+  gem 'taps'
 
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails', '>=2.0.0.beta.20'
