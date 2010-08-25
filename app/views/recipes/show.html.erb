@@ -5,7 +5,9 @@
 <ul>
   <% @recipe.ingredients.each do |ingredient| %>
     <li>
-      <%= ingredient.quantity %> &mdash;
+      <% if ingredient.quantity.present? %>
+        <%= ingredient.quantity %> &mdash;
+      <% end %>
       <%= ingredient.name %>
     </li>
   <% end %>
