@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   
   def search
     @recipes = Recipe.search(params[:q]).order(:name).
-        paginate(:page => params[:page], :per_page => 10)
+        paginate(:page => params[:page], :per_page => 10).uniq
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
@@ -61,16 +61,15 @@ class RecipesController < ApplicationController
   end
 
   def category_search
-    @categories = Category.search(params[:q]).limit(params[:limit]).group(:name)
+    @categories = Category.search(params[:q]).limit(params[:limit])
 
-    render :text => @categories.map(&:name).join("\n")
+    render :text => @categories.map(&:name).uniq.join("\n")
   end
 
   def ingredient_search
-    @ingredients = Ingredient.search(params[:q]).limit(params[:limit]).
-        group(:name)
+    @ingredients = Ingredient.search(params[:q]).limit(params[:limit])
 
-    render :text => @ingredients.map(&:name).join("\n")
+    render :text => @ingredients.map(&:name).uniq.join("\n")
   end
 
   protected
