@@ -14,9 +14,10 @@ gem 'pdfkit'
 
 group :development, :test do
   gem 'heroku'
+
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails', '>=2.0.0.beta.20'
-  
+
   gem 'wirble'
   gem 'bullet', '>= 2.0.0.rc'
 end
