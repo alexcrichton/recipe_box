@@ -15,10 +15,10 @@ class Recipe < ActiveRecord::Base
     if query.blank? 
       where(:id => 0) # no results
     else
-      joins(:ingredients, :category).where('categories.name LIKE :q ' +
-        'OR ingredients.name LIKE :q OR recipes.name LIKE :q',
-        :q => "%#{query}%"
-      ).group(Recipe.column_names.map{ |c| "recipes.#{c}" })
+      joins(:ingredients, :category).where('UPPER(categories.name) LIKE :q ' +
+        'OR UPPER(ingredients.name) LIKE :q OR UPPER(recipes.name) LIKE :q',
+        :q => "%#{query.upcase}%"
+      ).group(Recipe.column_names.map{ |c| "recipes.#{c}" }) # for postgresql
     end
   }
 

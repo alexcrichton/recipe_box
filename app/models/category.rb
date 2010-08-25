@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
     if query.blank?
       where(:id => 0)
     else
-      where('name LIKE ?', "%#{query}%")
+      where('UPPER(name) LIKE ?', "%#{query.upcase}%")
     end
   }
 end
