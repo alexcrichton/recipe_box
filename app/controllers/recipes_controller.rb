@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   
   def search
     @recipes = Recipe.search(params[:q]).order(:name).
-        paginate(:page => params[:page], :per_page => 10).uniq
+        paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
