@@ -3,7 +3,7 @@ $('#ingredients a.add').live('click', function() {
   html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
   $('#ingredients').append(html);
   html.find('.ingredient:text').autocomplete(
-    '/recipes/ingredient_search');
+    '/recipes/ingredient_search', {selectFirst:false});
 
   html.find('.quantity').focus();
   return false;
