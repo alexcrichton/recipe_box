@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.0.0.rc2'
+gem 'rails', '3.0.0'
 
 gem 'haml'
 gem 'paste', :git => 'git://github.com/alexcrichton/paste.git'
