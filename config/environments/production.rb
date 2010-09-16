@@ -50,13 +50,6 @@ BdayRecipes::Application.configure do
 
   Paste::Glue.config.serve_assets     = true
   Paste::CSS.config.no_cache          = true
-  Sass::Plugin.options[:cache]        = false
-  Sass::Plugin.options[:css_location] = 'tmp/stylesheets'
-  Sass::Plugin.options[:style]        = :compressed
-
-  config.to_prepare do
-    Sass::Plugin.update_stylesheets
-  end
 
   ActionView::Helpers::AssetTagHelper.cache_asset_timestamps = false
 

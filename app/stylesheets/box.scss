@@ -1,3 +1,5 @@
+@import "compass/css3";
+
 a {
   color: #966f32;
   
@@ -6,6 +8,8 @@ a {
   }
 }
 
+/*@import "compass/css3/font-face";*/
+/*@include font-face(ReenieBeanie, font-files('ReenieBeanie.ttf', ttf));*/
 @font-face { 
   font-family: ReenieBeanie; 
   src: url(/fonts/ReenieBeanie.ttf); 
@@ -16,7 +20,7 @@ body {
 }
 
 html {
-  background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(darken(#b5cdcf, 10%)), to(white));
+  @include linear-gradient(color-stops(darken(#b5cdcf, 10%), white));
   background-repeat: repeat-x;
 }
 
@@ -29,7 +33,7 @@ $width: 800px;
   border: none;
   background: none;
   position: relative;
-  background-image: url(/images/recipeboxfinal.png);
+  background-image: image-url('recipeboxfinal.png');
   background-size: $imgwidth $imgheight;
   background-repeat: no-repeat;
   min-height: $imgheight + 100px;
@@ -47,9 +51,8 @@ $width: 800px;
   
   z-index: 10;
   
-  font-family: ReenieBeanie;
+  font-family: "ReenieBeanie";
   font-size: 23px;
-  font-weight: bold;
 
   .add, .search {
     position: absolute;
@@ -66,14 +69,14 @@ $width: 800px;
     left: 0;
     top: 0;
 
-    background-image: url(/images/tape1.png);
+    background-image: image-url('tape1.png');
     width: 133px;
     height: 62px;
     
     span {
       padding: 3px 5px;
       margin: 20px;
-      -webkit-transform: rotate(-2deg);
+      @include rotate(-2deg);
     }
   }
   
@@ -81,17 +84,16 @@ $width: 800px;
     bottom: 0;
     right: 0;
     
-    background-image: url(/images/tape2.png);
+    background-image: image-url('tape2.png');
     width: 125px;
     height: 48px;
     
     span {
-/*      padding: 3px;*/
       margin: 10px 12px;
       width: 92px;
       font-size: 120%;
       text-align: center;
-      -webkit-transform: rotate(-1deg);
+      @include rotate(-1deg);
     }
   }
 }
@@ -101,7 +103,7 @@ $width: 800px;
   top: 50px;
   z-index: 11;
   opacity: 1;
-  -webkit-transform: rotate(0);
+  @include rotate(0);
 }
 
 @mixin card-start {
@@ -110,7 +112,7 @@ $width: 800px;
   opacity: 0;
   z-index: 0;
 
-  -webkit-transform: scale(0.27) rotate(-4deg);
+  @include transform(0.27, -4deg);
 }
 
 @mixin card-mid {
@@ -118,7 +120,7 @@ $width: 800px;
   top: -70px;
   z-index: 11;
   opacity: 1;
-  -webkit-transform: scale(0.3) rotate(15deg);
+  @include transform(0.3, 15deg);
 }
 
 @-webkit-keyframes card1 {
@@ -162,7 +164,7 @@ $width: 800px;
   & > .close {
     display: block;
     float: right;
-    background-image: url(/images/close_button.gif);
+    background-image: image-url('close_button.gif');
     height: 30px;
     width: 30px;
     text-indent: -9999px;
