@@ -1,4 +1,4 @@
-BdayRecipes::Application.routes.draw do
+Recipes::Application.routes.draw do
   resources :recipes do
     collection do
       post 'search'
