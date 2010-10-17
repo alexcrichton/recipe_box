@@ -3,5 +3,9 @@ class ApplicationController < ActionController::Base
   layout Proc.new{ |c| c.request.xhr? ? false : 'application' }
   
   helper :layout
+
+  def current_user
+    nil
+  end
   
 end

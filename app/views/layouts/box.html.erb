@@ -2,8 +2,8 @@
 <html>
   <head>
     <title><%= yield(:title) || 'Untitled' %></title>
-    <%= paste_css_tags 'application', 'box' %>
-    <%= paste_js_tags %>
+    <%= stylesheet_tags 'application', 'box' %>
+    <%= javascript_tags %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
