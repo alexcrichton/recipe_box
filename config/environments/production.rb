@@ -48,8 +48,8 @@ Recipes::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  Paste::Glue.config.serve_assets     = true
-  Paste::CSS.config.no_cache          = true
+  Paste.config.serve_assets = true
+  Paste.config.no_cache     = true
 
   ActionView::Helpers::AssetTagHelper.cache_asset_timestamps = false
 
@@ -57,9 +57,6 @@ Recipes::Application.configure do
       ::Rack::Static, 
       :urls => ['/stylesheets'], 
       :root => Rails.root.join('tmp').to_s
-
-  config.fb_secret = ENV['FACEBOOK_SECRET']
-  config.fb_app_id = ENV['FACEBOOK_APP_ID']
 
   config.action_mailer.default_url_options = {
     :host => 'recipes.alexcrichton.com'
