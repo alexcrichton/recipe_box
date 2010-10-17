@@ -6,8 +6,7 @@ gem 'compass'
 gem 'paste', :git => 'git://github.com/alexcrichton/paste.git'
 gem 'cancan'
 gem 'bluecloth'
-# gem 'mini_fb'
-# gem 'json' # required by mini_fb
+
 gem 'will_paginate', :git => 'git://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 
 gem 'pdfkit'
