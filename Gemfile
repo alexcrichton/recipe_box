@@ -7,7 +7,6 @@ gem 'devise'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 
 gem 'mini_fb'
-# gem 'json' # required by mini_fb
 
 gem 'compass'
 gem 'paste', :git => 'git://github.com/alexcrichton/paste.git'
