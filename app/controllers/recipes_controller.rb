@@ -2,8 +2,9 @@ class RecipesController < ApplicationController
 
   before_filter :set_category_id, :only => [:update, :create]
 
-  load_and_authorize_resource :find_by => :slug, :through => :current_user,
-    :collection => [:search]
+  load_resource :user, :find_by => :fb_uid
+  load_and_authorize_resource :find_by => :slug,
+    :through => [:user, :current_user], :collection => [:search]
 
   respond_to :html, :js
 
@@ -13,7 +14,7 @@ class RecipesController < ApplicationController
 
     respond_with @recipes
   end
-  
+
   def search
     @recipes = @recipes.search(params[:q]).order(:name).
         paginate(:page => params[:page], :per_page => 10)

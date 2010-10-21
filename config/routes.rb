@@ -1,10 +1,12 @@
 Recipes::Application.routes.draw do
-  resources :recipes do
-    collection do
-      post 'search'
-      get 'search(/:q)' => 'recipes#search', :as => 'search'
-      get :category_search
-      get :ingredient_search
+  scope '(:user_id)' do
+    resources :recipes, :shallow => true do
+      collection do
+        post 'search'
+        get 'search(/:q)' => 'recipes#search', :as => 'search'
+        get :category_search
+        get :ingredient_search
+      end
     end
   end
 

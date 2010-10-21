@@ -13,6 +13,6 @@ module ApplicationHelper
       []
     end
 
-    User.where :id => ids.map(&:id)
+    User.where :fb_uid => ids.map(&:id)
   end
 end

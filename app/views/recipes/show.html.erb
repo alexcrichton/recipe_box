@@ -1,5 +1,8 @@
 <h2 class='recipe'>
-  <%= @recipe.name %> <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
+  <%= @recipe.name %>
+  <% if can? :update, @recipe %>
+    <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
+  <% end %>
 </h2>
 
 <ul>
@@ -17,8 +20,10 @@
 
 <div id='bottom-links'>
   <%= link_to 'Download', recipe_path(@recipe, :format => 'pdf') %> |
-  <%= link_to 'Remove Recipe', @recipe, :method => :delete, :remote => true,
+  <% if can? :destroy, @recipe %>
+    <%= link_to 'Remove Recipe', @recipe, :method => :delete, :remote => true,
           :confirm => 'Are you sure?' %> |
+  <% end %>
   <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
   <%= link_to 'All Recipes', recipes_path, :remote => true %>
 </div>
