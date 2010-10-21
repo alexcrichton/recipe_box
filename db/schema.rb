@@ -47,19 +47,19 @@ ActiveRecord::Schema.define(:version => 20101021193708) do
   add_index "recipes", ["slug"], :name => "index_recipes_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
-    t.integer   "fb_uid"
-    t.string    "access_token"
-    t.string    "email"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "name"
-    t.integer   "sign_in_count",      :default => 0
-    t.datetime  "current_sign_in_at"
-    t.datetime  "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.string    "fb_username"
-    t.integer   "timezone"
+    t.string   "fb_uid"
+    t.string   "access_token"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "sign_in_count",      :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "fb_username"
+    t.integer  "timezone"
   end
 
   add_index "users", ["fb_uid"], :name => "index_users_on_fb_uid", :unique => true
