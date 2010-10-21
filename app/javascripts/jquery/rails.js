@@ -62,15 +62,15 @@ jQuery(function ($) {
     /**
      *  confirmation handler
      */
-    $('a[data-confirm],input[data-confirm]').live('click', function () {
+    $('a[data-confirm],input[data-confirm]').live('click', function (e) {
         var el = $(this);
         if (el.triggerAndReturn('confirm')) {
             if (!confirm(el.attr('data-confirm'))) {
+                e.preventDefault();
                 return false;
             }
         }
     });
-
 
     /**
      * remote handlers
@@ -81,11 +81,17 @@ jQuery(function ($) {
     });
 
     $('a[data-remote],input[data-remote]').live('click', function (e) {
+      if (!e.isDefaultPrevented()) {
         $(this).callRemote();
         e.preventDefault();
+      }
     });
 
-    $('a[data-method]:not([data-remote])').live('click', function (e){
+    $('a[data-method]:not([data-remote])').live('click', function (e) {
+        if (e.isDefaultPrevented()) {
+          return;
+        }
+
         var link = $(this),
             href = link.attr('href'),
             method = link.attr('data-method'),
