@@ -15,7 +15,7 @@ $('#ingredients a.add').live('click', function() {
 });
 
 $('#ingredients .close').live('click', function() {
-  $(this).parents('.ingredient').hide().find('.remove').val('1');  
+  $(this).parents('.ingredient').hide().find('.remove').val('1');
 });
 
 $('#ingredients input[type=text]').live('keydown', function(e) {
@@ -24,12 +24,11 @@ $('#ingredients input[type=text]').live('keydown', function(e) {
 
     if ($parent.next().length == 0) {
       $('#ingredients a').click();
+      e.preventDefault();
       return false;
     }
   }
   return true;
 });
-
-
 
 <%= render 'form_bind' %>
