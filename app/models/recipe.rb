@@ -13,7 +13,7 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :category, :reject_if => :all_blank
 
   scope :search, lambda { |query|
-    if query.blank? 
+    if query.blank?
       where(:id => 0) # no results
     else
       joins(:ingredients, :category).where('UPPER(categories.name) LIKE :q ' +
@@ -26,10 +26,10 @@ class Recipe < ActiveRecord::Base
   def to_param
     self[:slug]
   end
-  
+
   protected
-  
+
   def set_slug_from_name
-    self[:slug] = self[:name].parameterize
+    self[:slug] = self[:name].parameterize unless self[:name].blank?
   end
 end
