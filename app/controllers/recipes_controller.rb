@@ -2,26 +2,27 @@ class RecipesController < ApplicationController
 
   before_filter :set_category_id, :only => [:update, :create]
 
-  load_and_authorize_resource :find_by => :slug
+  load_and_authorize_resource :find_by => :slug, :through => :current_user,
+    :collection => [:search]
 
   respond_to :html, :js
 
   def index
-    @recipes = Recipe.order(:name).
+    @recipes = @recipes.order(:name).
         paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes
   end
   
   def search
-    @recipes = Recipe.search(params[:q]).order(:name).
+    @recipes = @recipes.search(params[:q]).order(:name).
         paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
     end
   end
-  
+
   def box
     respond_to do |format|
       format.html { render :layout => 'box' }
@@ -75,7 +76,7 @@ class RecipesController < ApplicationController
   end
 
   protected
-  
+
   def set_category_id
     name = params[:recipe][:category_attributes][:name]
     category = Category.find_by_name(name)

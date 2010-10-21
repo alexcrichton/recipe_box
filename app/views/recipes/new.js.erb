@@ -2,4 +2,34 @@ $('#card .content').html(
   "<%= escape_javascript render(:template => 'recipes/new.html') %>"
 );
 
+$('#ingredients a.add').live('click', function() {
+  var html = $('#new-ingredient').html();
+  html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
+  $('#ingredients').append(html);
+  html.find('.ingredient:text').autocomplete(
+    '/recipes/ingredient_search', {selectFirst:false});
+
+  html.find('.quantity').focus();
+
+  return false;
+});
+
+$('#ingredients .close').live('click', function() {
+  $(this).parents('.ingredient').hide().find('.remove').val('1');  
+});
+
+$('#ingredients input[type=text]').live('keydown', function(e) {
+  if (e.keyCode == 13) { // enter key
+    var $parent = $(e.srcElement).parents('div.ingredient');
+
+    if ($parent.next().length == 0) {
+      $('#ingredients a').click();
+      return false;
+    }
+  }
+  return true;
+});
+
+
+
 <%= render 'form_bind' %>

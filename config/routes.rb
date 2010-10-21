@@ -8,5 +8,9 @@ Recipes::Application.routes.draw do
     end
   end
 
+  devise_for :users
+
+  match 'auth/facebook/callback' => 'authentications#create'
+
   root :to => 'recipes#box'
 end

@@ -1,55 +1,31 @@
-$('#ingredients a.add').live('click', function() {
-  var html = $('#new-ingredient').html();
-  html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
-  $('#ingredients').append(html);
-  html.find('.ingredient:text').autocomplete(
-    '/recipes/ingredient_search', {selectFirst:false});
+// var bindForm = function($el) {
+// 
+//   $el.find('#recipe_category_attributes_name').autocomplete(
+//     '/recipes/category_search');
+//   $el.find('.ingredient:text').autocomplete(
+//     '/recipes/ingredient_search');
+// 
+//   // $el.ajaxForm({
+//   //   beforeSubmit: function(ignored, $form) {
+//   //     var submit = $form.find(':submit').hide();
+//   //     $(
+//   //       "<%= escape_javascript image_tag('ajax-small.gif') %>"
+//   //     ).insertAfter(submit);
+//   //   },
+//   // 
+//   //   success: function(data, a, b, $form) {
+//   //     data = $(data);
+//   //     $('#card .content').html(data);
+//   //     if (data.find('#errorExplanation').length > 0) {
+//   //       bindForm($('#card form'));
+//   //     }
+//   //   }
+//   // });
+// };
+// 
+// bindForm($('form'));
 
-  html.find('.quantity').focus();
-
-  return false;
-});
-
-$('#ingredients .close').live('click', function() {
-  $(this).parents('.ingredient').hide().find('.remove').val('1');  
-});
-
-$('#ingredients input[type=text]').live('keydown', function(e) {
-  if (e.keyCode == 13) { // enter key
-    var $parent = $(e.srcElement).parents('div.ingredient');
-
-    if ($parent.next().length == 0) {
-      $('#ingredients a').click();
-      return false;
-    }
-  }
-  return true;
-});
-
-
-var bindForm = function($el) {
-
-  $el.find('#recipe_category_attributes_name').autocomplete(
-    '/recipes/category_search');
-  $el.find('.ingredient:text').autocomplete(
-    '/recipes/ingredient_search');
-
-  $el.ajaxForm({
-    beforeSubmit: function(ignored, $form) {
-      var submit = $form.find(':submit').hide();
-      $(
-        "<%= escape_javascript image_tag('ajax-small.gif') %>"
-      ).insertAfter(submit);
-    },
-
-    success: function(data, a, b, $form) {
-      data = $(data);
-      $('#card .content').html(data);
-      if (data.find('#errorExplanation').length > 0) {
-        bindForm($('#card form'));
-      }
-    }
-  });
-};
-
-bindForm($('form'));
+$('form #recipe_category_attributes_name').autocomplete(
+  '/recipes/category_search');
+$('form .ingredient:text').autocomplete(
+  '/recipes/ingredient_search');

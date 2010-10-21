@@ -1,7 +1,7 @@
 <% javascript 'rails' %>
 <% stylesheet 'recipes/form' %>
 
-<%= form_for @recipe do |f| %>
+<%= form_for @recipe, :remote => true do |f| %>
   <%= render 'shared/error_messages', :target => @recipe %>
 
   <div class='col1'>
@@ -21,16 +21,15 @@
     </div>
   </div>
   <div class='col2' id='ingredients'>
-      <h4>Ingredients <%= link_to 'add', '#', :class => 'add' %></h4>
+    <h4>Ingredients <%= link_to 'add', '#', :class => 'add' %></h4>
 
-      <dl>
-        <dt>Quantity</dt>
-        <dd>Name</dd>
-      </dl>
-      <%= f.fields_for :ingredients do |f2| %>
-        <%= render 'ingredient', :f => f2 %>
-      <% end %>
+    <dl>
+      <dt>Quantity</dt>
+      <dd>Name</dd>
     </dl>
+    <%= f.fields_for :ingredients do |f2| %>
+      <%= render 'ingredient', :f => f2 %>
+    <% end %>
   </div>
 
   <div style='display:none' id='new-ingredient'>

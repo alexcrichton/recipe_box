@@ -1,9 +1,10 @@
 class Recipe < ActiveRecord::Base
   has_many :ingredients
   belongs_to :category
+  belongs_to :user
 
-  validates_presence_of :name, :directions, :slug
-  validates_uniqueness_of :name, :slug
+  validates_presence_of :name, :directions, :slug, :user_id
+  validates_uniqueness_of :name, :slug, :scope => :user_id
 
   before_validation :set_slug_from_name
 
