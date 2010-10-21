@@ -8,8 +8,12 @@ class AuthenticationsController < ApplicationController
     if user.nil?
       user = User.new
       user.apply_omniauth(omniauth)
-      user.save!
     end
+
+    user.access_token = omniauth['credentials']['token']
+    user.timezone     = omniauth['extra']['user_hash']['timezone']
+    user.fb_username  = omniauth['user_info']['nickname']
+    user.save!
 
     flash[:notice] = 'Signed in successfully.'
     sign_in_and_redirect user

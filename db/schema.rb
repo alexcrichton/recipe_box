@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021163052) do
+ActiveRecord::Schema.define(:version => 20101021193708) do
 
   create_table "categories", :force => true do |t|
     t.string    "name"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(:version => 20101021163052) do
     t.datetime  "last_sign_in_at"
     t.string    "current_sign_in_ip"
     t.string    "last_sign_in_ip"
+    t.string    "fb_username"
+    t.integer   "timezone"
   end
 
   add_index "users", ["fb_uid"], :name => "index_users_on_fb_uid", :unique => true
