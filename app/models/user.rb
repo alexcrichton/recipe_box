@@ -9,8 +9,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :fb_uid
   validates_presence_of :name
 
-  def display_name
-    name.blank? ? email : name
+  def to_param
+    fb_username.blank? ? fb_uid : fb_username
+  end
+
+  def first_name
+    name.split(' ').first
   end
 
   def apply_omniauth omniauth

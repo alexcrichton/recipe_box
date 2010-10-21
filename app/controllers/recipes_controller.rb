@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
 
   before_filter :set_category_id, :only => [:update, :create]
 
-  load_resource :user, :find_by => :fb_uid
+  before_filter :load_user
   load_and_authorize_resource :find_by => :slug,
     :through => [:user, :current_user], :collection => [:search]
 
@@ -77,6 +77,13 @@ class RecipesController < ApplicationController
   end
 
   protected
+
+  def load_user
+    if params[:user_id]
+      @user = User.find_by_fb_username(params[:user_id]) ||
+        User.find_by_fb_uid!(params[:user_id])
+    end
+  end
 
   def set_category_id
     name = params[:recipe][:category_attributes][:name]
