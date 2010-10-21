@@ -13,22 +13,13 @@ class User < ActiveRecord::Base
     name.blank? ? email : name
   end
 
-  def apply_omniauth(omniauth)
-    if email.blank?
-      self.email = omniauth['user_info']['email']
-
-      if omniauth['extra'] && omniauth['extra']['user_hash']
-        self.email ||= omniauth['extra']['user_hash']['email']
-      end
-    end
-
-    if name.blank?
-      self.name = omniauth['user_info']['name']
-    end
-
-    if fb_uid.blank?
-      self.fb_uid = omniauth['uid']
-    end
+  def apply_omniauth omniauth
+    self.email        = omniauth['extra']['user_hash']['email']
+    self.name         = omniauth['user_info']['name']
+    self.fb_uid       = omniauth['uid']
+    self.access_token = omniauth['credentials']['token']
+    self.timezone     = omniauth['extra']['user_hash']['timezone']
+    self.fb_username  = omniauth['user_info']['nickname']
   end
 
   def password_required?
