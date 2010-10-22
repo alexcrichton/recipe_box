@@ -10,8 +10,8 @@ gem 'mini_fb'
 
 gem 'compass'
 gem 'paste', :git => 'git://github.com/alexcrichton/paste.git'
-gem 'bluecloth'
 
+gem 'bluecloth'
 gem 'will_paginate', :git => 'git://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 
 gem 'pdfkit'
@@ -25,4 +25,5 @@ end
 
 group :production do
   gem 'pg'
+  gem 'memcached-northscale', :require => 'memcached'
 end

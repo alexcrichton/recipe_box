@@ -26,7 +26,7 @@ Recipes::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :mem_cache_store, Memcached::Rails.new
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
@@ -54,8 +54,8 @@ Recipes::Application.configure do
   ActionView::Helpers::AssetTagHelper.cache_asset_timestamps = false
 
   config.app_middleware.insert_before Rack::Runtime,
-      ::Rack::Static, 
-      :urls => ['/stylesheets'], 
+      ::Rack::Static,
+      :urls => ['/stylesheets'],
       :root => Rails.root.join('tmp').to_s
 
   config.action_mailer.default_url_options = {

@@ -76,6 +76,7 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
+    memcached-northscale (0.19.5.4)
     mime-types (1.16)
     mini_fb (1.1.3)
       hashie
@@ -146,6 +147,7 @@ DEPENDENCIES
   compass
   devise
   heroku
+  memcached-northscale
   mini_fb
   oa-oauth
   paste!
