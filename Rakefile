@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Recipes::Application.load_tasks
+RecipeBox::Application.load_tasks

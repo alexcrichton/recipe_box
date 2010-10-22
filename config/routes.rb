@@ -1,4 +1,4 @@
-Recipes::Application.routes.draw do
+RecipeBox::Application.routes.draw do
   resources :recipes, :shallow => true do
     collection do
       post 'search'
