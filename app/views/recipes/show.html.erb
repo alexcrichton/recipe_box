@@ -27,7 +27,7 @@
           :confirm => 'Are you sure?' %> |
   <% end %>
 
-  <% if can? :create, @user.recipes.build %>
+  <% if can? :create, @user ? @user.recipes.build : Recipe %>
     <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
   <% end %>
 
