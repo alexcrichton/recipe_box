@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/alexcrichton/paste.git
-  revision: 444e3dae3c9307f489edc76f5a2f3df4c1a5a1f5
+  revision: 880f93457b0acbb2923aa7ba79a3e668fb91e0cc
   specs:
-    paste (0.3.0)
-      activesupport (>= 3.0.0.beta4)
+    paste (0.3.1)
+      activesupport (~> 3.0)
       sprockets
 
 GIT
@@ -58,12 +58,13 @@ GEM
       warden (~> 0.10.7)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    faraday (0.4.6)
-      addressable (>= 2.1.1)
-      rack (>= 1.0.1)
-    haml (3.0.21)
+    faraday (0.5.1)
+      addressable (~> 2.2.2)
+      multipart-post (~> 1.0.1)
+      rack (~> 1.2.1)
+    haml (3.0.22)
     hashie (0.4.0)
-    heroku (1.10.14)
+    heroku (1.11.0)
       json_pure (>= 1.2.0, < 1.5.0)
       launchy (~> 0.3.2)
       rest-client (>= 1.4.0, < 1.7.0)
@@ -82,19 +83,20 @@ GEM
       hashie
       rest-client
     multi_json (0.0.4)
+    multipart-post (1.0.1)
     nokogiri (1.4.3.1)
-    oa-core (0.1.5)
+    oa-core (0.1.6)
       rack (~> 1.1)
-    oa-oauth (0.1.5)
+    oa-oauth (0.1.6)
       multi_json (~> 0.0.2)
       nokogiri (~> 1.4.2)
-      oa-core (= 0.1.5)
+      oa-core (= 0.1.6)
       oauth (~> 0.4.0)
-      oauth2 (~> 0.0.10)
+      oauth2 (~> 0.1.0)
     oauth (0.4.3)
-    oauth2 (0.0.13)
-      faraday (~> 0.4.1)
-      multi_json (>= 0.0.4)
+    oauth2 (0.1.0)
+      faraday (~> 0.5.0)
+      multi_json (~> 0.0.4)
     pdfkit (0.4.6)
     pg (0.9.0)
     polyglot (0.3.1)
