@@ -8,10 +8,13 @@
 <% end %>
 
 <div id='buttons'>
-  <%= link_to content_tag(:span, 'Add recipe'), 
-        new_recipe_path, :remote => true, :class => 'add' %>
-  <%= link_to content_tag(:span, 'Search'), 
-        recipes_path, :remote => true, :class => 'search' %>
+  <% if can? :create, @user ? @user.recipes.build : Recipe %>
+    <%= link_to content_tag(:span, 'Add recipe'),
+          new_recipe_path, :remote => true, :class => 'add' %>
+  <% end %>
+
+  <%= link_to content_tag(:span, 'Search'),
+        [@user, :recipes], :remote => true, :class => 'search' %>
 </div>
 
 <div id='card'>
