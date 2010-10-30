@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   has_many :ingredients
+  has_many :comments, :as => :commentable
   belongs_to :category
   belongs_to :user
 
