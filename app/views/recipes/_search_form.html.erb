@@ -4,7 +4,7 @@
   <%= form_tag search_recipes_path, :remote => true, :method => 'get' do %>
     <div>
       <%= text_field_tag :q, params[:q], :autocomplete => 'off',
-            :placeholder => 'Search' %>
+            :placeholder => 'Search', :autofocus => true %>
     </div>
   <% end %>
 </div>
