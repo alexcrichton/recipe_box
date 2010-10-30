@@ -9,6 +9,21 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :fb_uid
   validates_presence_of :name
 
+  def friends
+    @friends ||= begin
+      ids = if current_user
+        Rails.cache.fetch(current_user.fb_uid + '_fb_friends') do
+          MiniFB.get(current_user.access_token, current_user.fb_uid,
+            :type => 'friends').data
+        end
+      else
+        []
+      end
+
+      User.where :fb_uid => ids.map(&:id)
+    end
+  end
+
   def to_param
     fb_username.blank? ? fb_uid : fb_username
   end
