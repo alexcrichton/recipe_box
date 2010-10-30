@@ -18,7 +18,7 @@ $(function() {
         .insertAfter(this);
   });
 
-  $('*[data-remote]').live('ajax:success ajax:complete ajax:failure', function () {
+  $('*[data-remote]').live('ajax:complete', function () {
     $(this).next('img').remove();
   });
 });
