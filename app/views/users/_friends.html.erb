@@ -1,0 +1,13 @@
+<h1>Friends Using Recipe Box</h1>
+
+<div id='friends'>
+  <ul>
+    <% current_friends.each do |friend| %>
+      <li><%= link_to friend.name, user_path(friend) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id='bottom-links'>
+  <%= link_to 'Your Recipes', root_path %>
+</div>

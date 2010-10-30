@@ -14,6 +14,7 @@ RecipeBox::Application.routes.draw do
     end
   end
 
+  get 'friends' => 'users#friends'
   devise_for :users
 
   match 'auth/facebook/callback' => 'authentications#create'

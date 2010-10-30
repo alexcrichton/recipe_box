@@ -67,7 +67,7 @@ $width: 800px;
   font-family: "ReenieBeanie";
   font-size: 23px;
 
-  .add, .search {
+  .add, .search, .friends, .myfriends {
     position: absolute;
     display: inline-block;
     text-decoration: none;
@@ -78,19 +78,39 @@ $width: 800px;
     }
   }
 
-  .add {
+  .add, .friends {
     left: 0;
     top: 0;
-
-    background-image: image-url('tape1.png');
-    width: 133px;
-    height: 62px;
 
     span {
       padding: 3px 5px;
       margin: 20px;
       @include rotate(-2deg);
     }
+  }
+
+  .myfriends {
+    background-image: image-url('tape1.png');
+    top: 0;
+    right: 0;
+
+    span {
+      padding: 3px 5px;
+      margin: 10px;
+      @include rotate(2deg);
+    }
+  }
+
+  .add {
+    background-image: image-url('tape1.png');
+    width: 133px;
+    height: 62px;
+  }
+
+  .friends {
+    background-image: image-url('tape1.png');
+    width: 153px;
+    height: 72px;
   }
 
   .search {
