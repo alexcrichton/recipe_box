@@ -2,7 +2,7 @@ $('#card .content').html(
   "<%= escape_javascript render(:template => 'recipes/new.html') %>"
 );
 
-$('#ingredients a.add').die('click').live('click', function() {
+$('#ingredients a.add').die('click').live('click', function(e) {
   var html = $('#new-ingredient').html();
   html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
   $('#ingredients').append(html);
@@ -11,11 +11,13 @@ $('#ingredients a.add').die('click').live('click', function() {
 
   html.find('.quantity').focus();
 
-  return false;
+  e.preventDefault();
 });
 
-$('#ingredients .close').die('click').live('click', function() {
+$('#ingredients .close').die('click').live('click', function(e) {
   $(this).parents('.ingredient').hide().find('.remove').val('1');
+
+  e.preventDefault();
 });
 
 $('#ingredients input[type=text]').die('click').live('keydown', function(e) {
@@ -25,10 +27,8 @@ $('#ingredients input[type=text]').die('click').live('keydown', function(e) {
     if ($parent.next().length == 0) {
       $('#ingredients a').click();
       e.preventDefault();
-      return false;
     }
   }
-  return true;
 });
 
 <%= render 'form_bind' %>
