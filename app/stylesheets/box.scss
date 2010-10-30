@@ -41,6 +41,19 @@ $width: 800px;
   width: $width;
 }
 
+#name {
+  position: absolute;
+
+  left: 318px;
+  top: 140px;
+  height: 100px;
+  width: 130px;
+  font-family: "ReenieBeanie";
+  font-size: 30px;
+  text-align: center;
+  color: #966f32;
+}
+
 #buttons {
   position: absolute;
   left: 285px;

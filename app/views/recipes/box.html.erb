@@ -1,6 +1,12 @@
 <% javascript 'box', 'rails', 'jquery/autocomplete' %>
 <% stylesheet 'recipes/form', 'pagination' %>
 
+<% if @user %>
+  <div id='name'><%= @user.name %>'s Recipes</div>
+<% else %>
+  <div id='name'>Your Recipes</div>
+<% end %>
+
 <div id='buttons'>
   <%= link_to content_tag(:span, 'Add recipe'), 
         new_recipe_path, :remote => true, :class => 'add' %>
