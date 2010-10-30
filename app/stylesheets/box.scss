@@ -99,6 +99,7 @@ $width: 800px;
 }
 
 @mixin card-end {
+  margin-left: 0;
   left: 50px;
   top: 50px;
   z-index: 11;
@@ -107,6 +108,7 @@ $width: 800px;
 }
 
 @mixin card-start {
+  margin-left: 0;
   left: 25px;
   top: 75px;
   opacity: 0;
@@ -116,6 +118,7 @@ $width: 800px;
 }
 
 @mixin card-mid {
+  margin-left: 0;
   left: 115px;
   top: -70px;
   z-index: 11;
@@ -186,6 +189,8 @@ $width: 800px;
     -webkit-animation-name: card2;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: ease-in-out;
+
+    margin-left: -9999em;
   }
   
   .content {
