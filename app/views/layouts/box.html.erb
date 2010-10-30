@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) || 'Untitled' %></title>
+    <title><%= show_title? ? yield(:title) : 'Recipe Box' %></title>
     <%= stylesheet_tags 'application', 'box' %>
     <%= javascript_tags %>
     <%= csrf_meta_tag %>
