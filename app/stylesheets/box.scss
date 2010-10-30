@@ -2,7 +2,7 @@
 
 a {
   color: #966f32;
-  
+
   &:hover {
     color: lighten(#966f32, 10%);
   }
@@ -10,9 +10,9 @@ a {
 
 /*@import "compass/css3/font-face";*/
 /*@include font-face(ReenieBeanie, font-files('ReenieBeanie.ttf', ttf));*/
-@font-face { 
-  font-family: ReenieBeanie; 
-  src: url(/fonts/ReenieBeanie.ttf); 
+@font-face {
+  font-family: ReenieBeanie;
+  src: url(/fonts/ReenieBeanie.ttf);
 }
 
 body {
@@ -48,9 +48,9 @@ $width: 800px;
 
   height: 100px;
   width: 200px;
-  
+
   z-index: 10;
-  
+
   font-family: "ReenieBeanie";
   font-size: 23px;
 
@@ -72,22 +72,22 @@ $width: 800px;
     background-image: image-url('tape1.png');
     width: 133px;
     height: 62px;
-    
+
     span {
       padding: 3px 5px;
       margin: 20px;
       @include rotate(-2deg);
     }
   }
-  
+
   .search {
     bottom: 0;
     right: 0;
-    
+
     background-image: image-url('tape2.png');
     width: 125px;
     height: 48px;
-    
+
     span {
       margin: 10px 12px;
       width: 92px;
@@ -192,7 +192,7 @@ $width: 800px;
 
     margin-left: -9999em;
   }
-  
+
   .content {
     padding: 20px;
   }
@@ -204,7 +204,7 @@ $width: 800px;
     margin: 0 auto;
     clear: both;
   }
-  
+
   #results {
     .recipe {
       font-size: 1.6em;
