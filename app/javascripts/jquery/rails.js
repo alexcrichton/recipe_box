@@ -62,15 +62,27 @@ jQuery(function ($) {
     /**
      *  confirmation handler
      */
-    $('a[data-confirm],input[data-confirm]').live('click', function (e) {
-        var el = $(this);
-        if (el.triggerAndReturn('confirm')) {
-            if (!confirm(el.attr('data-confirm'))) {
-                e.preventDefault();
-                return false;
-            }
-        }
-    });
+    var jqueryVersion = $().jquery;
+
+    if ( (jqueryVersion === '1.4') || (jqueryVersion === '1.4.1') || (jqueryVersion === '1.4.2')){
+      $('a[data-confirm],input[data-confirm]').live('click', function () {
+          var el = $(this);
+          if (el.triggerAndReturn('confirm')) {
+              if (!confirm(el.attr('data-confirm'))) {
+                  return false;
+              }
+          }
+      });
+    } else {
+      $('body').delegate('a[data-confirm],input[data-confirm]', 'click', function () {
+          var el = $(this);
+          if (el.triggerAndReturn('confirm')) {
+              if (!confirm(el.attr('data-confirm'))) {
+                  return false;
+              }
+          }
+      });
+    }
 
     /**
      * remote handlers
@@ -81,17 +93,11 @@ jQuery(function ($) {
     });
 
     $('a[data-remote],input[data-remote]').live('click', function (e) {
-      if (!e.isDefaultPrevented()) {
         $(this).callRemote();
         e.preventDefault();
-      }
     });
 
-    $('a[data-method]:not([data-remote])').live('click', function (e) {
-        if (e.isDefaultPrevented()) {
-          return;
-        }
-
+    $('a[data-method]:not([data-remote])').live('click', function (e){
         var link = $(this),
             href = link.attr('href'),
             method = link.attr('data-method'),
