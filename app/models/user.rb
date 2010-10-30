@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def friends
+  def friends refresh = false
+    @friends = nil if refresh
     @friends ||= User.where :fb_uid => friend_uids.map(&:id)
   end
 

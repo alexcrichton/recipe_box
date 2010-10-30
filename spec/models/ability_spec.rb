@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'cancan/matchers'
 
 describe Ability do
+
   before :each do
     @user = Factory.create(:user)
     @user.stub(:friend_uids).and_return []
@@ -27,4 +28,16 @@ describe Ability do
 
     @ability.should_not be_able_to(:read, recipe)
   end
+
+  it "allows a user to read a friends' recipe" do
+    user2 = Factory.create(:user, :fb_uid => '1')
+    @user.stub(:friend_uids).and_return [Hashie::Mash.new(:id => '1')]
+    @user.friends(true) # reload the friends
+    @ability = Ability.new @user
+
+    recipe = Factory.create :recipe, :user => user2
+
+    @ability.should be_able_to(:read, recipe)
+  end
+
 end
