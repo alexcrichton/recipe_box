@@ -43,6 +43,10 @@ module RecipeBox
       g.test_framework :rspec
     end
 
+    config.to_prepare do
+      load 'will_paginate/ajax_link_renderer.rb'
+    end
+
     config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end
