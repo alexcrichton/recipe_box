@@ -4,6 +4,7 @@ require 'cancan/matchers'
 describe Ability do
   before :each do
     @user = Factory.create(:user)
+    @user.stub(:friend_uids).and_return []
     @ability = Ability.new @user
   end
 
@@ -19,5 +20,11 @@ describe Ability do
 
     @ability.should_not be_able_to(:create, Recipe)
     @ability.should_not be_able_to(:read, Recipe)
+  end
+
+  it "does not allow a user to read a non-friends' recipes" do
+    recipe = Factory.create :recipe, :user => Factory.create(:user)
+
+    @ability.should_not be_able_to(:read, recipe)
   end
 end
