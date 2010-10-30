@@ -1,5 +1,11 @@
 RecipeBox::Application.routes.draw do
-  resources :recipes, :shallow => true do
+  user_regex = /[^\/]+/
+
+  scope ':user_id', :as => 'user', :constraints => {:user_id => user_regex } do
+    resources :recipes, :only => [:index, :show]
+  end
+
+  resources :recipes do
     collection do
       post 'search'
       get 'search(/:q)' => 'recipes#search', :as => 'search'
@@ -8,13 +14,10 @@ RecipeBox::Application.routes.draw do
     end
   end
 
-  scope ':user_id', :as => 'user', :constraints => {:user_id => /[^\/]+/} do
-    resources :recipes, :only => [:index, :show]
-  end
-
   devise_for :users
 
   match 'auth/facebook/callback' => 'authentications#create'
 
+  get ':user_id' => 'recipes#box', :user_id => user_regex, :as => 'user'
   root :to => 'recipes#box'
 end
