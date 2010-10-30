@@ -21,6 +21,13 @@ group :development, :test do
   gem 'taps'
 
   gem 'sqlite3-ruby', :require => 'sqlite3'
+
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'spork'
 end
 
 group :production do
