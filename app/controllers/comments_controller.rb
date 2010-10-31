@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
 
   respond_to :js
 
-  load_resource :recipe, :find_by => :slug
+  before_filter :load_user
+  load_resource :recipe, :find_by => :slug, :through => [:user, :current_user]
   load_and_authorize_resource :through => :recipe
 
   def index

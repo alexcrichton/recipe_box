@@ -262,6 +262,11 @@ h2 a {
   }
 }
 
+#comments {
+  overflow: auto;
+  height: 400px;
+}
+
 .comment {
   border-top: 1px solid #ccc;
 

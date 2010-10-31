@@ -26,7 +26,7 @@
 
   <% if can? :comment, @recipe %>
     <%= link_to pluralize(@recipe.comments_count, 'Comment'),
-          [@recipe, :comments], :remote => true %> |
+          [@user, @recipe, :comments], :remote => true %> |
   <% end %>
 
   <% if can? :destroy, @recipe %>

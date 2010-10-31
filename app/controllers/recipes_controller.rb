@@ -78,13 +78,6 @@ class RecipesController < ApplicationController
 
   protected
 
-  def load_user
-    if params[:user_id]
-      @user = User.find_by_fb_username(params[:user_id]) ||
-        User.find_by_fb_uid!(params[:user_id])
-    end
-  end
-
   def set_category_id
     name = params[:recipe][:category_attributes][:name]
     category = Category.find_by_name(name)

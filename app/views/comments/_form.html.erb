@@ -1,5 +1,5 @@
 <div class='new-comment'>
-  <%= form_for [@recipe, @comment || @recipe.comments.build],
+  <%= form_for [@user, @recipe, @comment || @recipe.comments.build],
       :remote => true do |f| %>
 
     <%= render 'shared/error_messages', :target => f.object %>

@@ -2,7 +2,9 @@ RecipeBox::Application.routes.draw do
   user_regex = /[^\/]+/
 
   scope ':user_id', :as => 'user', :constraints => {:user_id => user_regex } do
-    resources :recipes, :only => [:index, :show]
+    resources :recipes, :only => [:index, :show] do
+      resources :comments
+    end
   end
 
   resources :recipes do
