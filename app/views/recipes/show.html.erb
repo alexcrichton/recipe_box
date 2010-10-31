@@ -19,6 +19,8 @@
 <%= markdown @recipe.directions %>
 
 <div id='bottom-links'>
+  <fb:like href='<%= polymorphic_url [current_user, @recipe] %>'/>
+  <br/>
   <%= link_to 'Download',
           polymorphic_path([@user, @recipe], :format => 'pdf') %> |
 

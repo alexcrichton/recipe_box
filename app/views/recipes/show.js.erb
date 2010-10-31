@@ -1,3 +1,5 @@
 $('#card .content').html(
   "<%= escape_javascript render(:template => 'recipes/show.html') %>"
 );
+
+FB.XFBML.parse($('fb:like')[0]);
