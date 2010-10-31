@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  respond_to :js
+  respond_to :js, :html
 
   before_filter :load_user
   load_resource :recipe, :find_by => :slug, :through => [:user, :current_user]

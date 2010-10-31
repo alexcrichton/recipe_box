@@ -2,18 +2,56 @@
 <html>
   <head>
     <title><%= show_title? ? yield(:title) : 'Recipe Box' %></title>
-    <%= stylesheet_link_tag 'application', :media => 'all' %>
-    <%= stylesheet_tags %>
-    <%= javascript_tags %>
+    <%= stylesheet_tags 'application', 'box', 'recipes/form', 'pagination' %>
+    <%= javascript_tags 'box', 'rails', 'jquery/autocomplete' %>
     <%= csrf_meta_tag %>
+    <meta property='og:site_name' content='Recipe Box'/>
   </head>
   <body>
     <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% if @user %>
+        <div id='name'><%= @user.name %>'s Recipes</div>
+      <% else %>
+        <div id='name'>Your Recipes</div>
       <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+
+      <div id='buttons'>
+        <% if can? :create, @user ? @user.recipes.build : Recipe %>
+          <%= link_to content_tag(:span, 'Add recipe'),
+                new_recipe_path, :remote => true, :class => 'add' %>
+
+          <%= link_to content_tag(:span, 'Friends'),
+                friends_path, :remote => true, :class => 'myfriends' %>
+        <% else %>
+          <%= link_to content_tag(:span, 'Other Friends'), friends_path,
+                :class => 'friends', :remote => true %>
+        <% end %>
+
+        <%= link_to content_tag(:span, 'Search'),
+              [@user, :recipes], :remote => true, :class => 'search' %>
+      </div>
+
+      <div id='card'<%= %( class='start').html_safe unless yield.blank? %>>
+        <%= link_to 'go back', '#', :class => 'close' %>
+
+        <div class='content'>
+          <%= yield %>
+        </div>
+      </div>
     </div>
+
+    <div id="fb-root" style='display:none'></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({appId: '<%= Rails.application.config.fb_app_id %>',
+                 status: true, cookie: true, xfbml: true});
+      };
+      (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol +
+          '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    </script>
   </body>
 </html>

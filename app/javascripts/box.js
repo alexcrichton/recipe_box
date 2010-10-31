@@ -6,7 +6,7 @@ $(function() {
     $('#card').addClass('start').removeClass('end');
   });
 
-  $('#card a').click(function() {
+  $('#card > a.close').click(function() {
     $('#card').removeClass('start').addClass('end');
     window.location.hash = '';
     return false;

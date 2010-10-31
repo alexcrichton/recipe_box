@@ -1,9 +1,22 @@
-<%= render @recipes %>
+<h1><%= @user ? @user.name + "'s" : 'Your' %> Recipes</h1>
 
-<% if @user.nil? %>
-  <div id='bottom-links'>
-    <%= link_to 'New Recipe', new_recipe_path, :remote => true %>
-  </div>
-<% end %>
+<div class='search'>
+  <%= form_tag search_recipes_path, :remote => true, :method => 'get' do %>
+    <div>
+      <%= text_field_tag :q, params[:q], :autocomplete => 'off',
+            :placeholder => 'Search', :autofocus => true %>
+    </div>
+  <% end %>
+</div>
 
-<%= will_paginate @recipes, :renderer => WillPaginate::AjaxLinkRenderer %>
+<div id='results' class='pagination-container'>
+  <%= render @recipes %>
+
+  <% if @user.nil? %>
+    <div id='bottom-links'>
+      <%= link_to 'New Recipe', new_recipe_path, :remote => true %>
+    </div>
+  <% end %>
+
+  <%= will_paginate @recipes, :renderer => WillPaginate::AjaxLinkRenderer %>
+</div>

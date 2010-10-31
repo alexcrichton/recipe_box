@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
 
   def box
     respond_to do |format|
-      format.html { render :layout => 'box' }
+      format.html
     end
   end
 
