@@ -1,0 +1,7 @@
+<div class='comment'>
+  <div class='credit'>
+    <%= comment.user.name %>, <%= time_ago_in_words comment.created_at %> ago
+  </div>
+
+  <%= markdown comment.comment %>
+</div>

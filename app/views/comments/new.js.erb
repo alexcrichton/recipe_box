@@ -1,0 +1,8 @@
+var form = $("<%= escape_javascript render('form') %>");
+
+$('#new-comment').html(form);
+
+form.find('.cancel').click(function(e) {
+  $('#new-comment').html('');
+  e.preventDefault();
+});

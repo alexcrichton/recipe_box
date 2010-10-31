@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+  <%= render :template => 'comments/new' %>
+<% else %>
+  console.log('hello world');
+  $('#new-comment').html('');
+  $('#comments').append("<%= escape_javascript render(@comment) %>");
+<% end %>

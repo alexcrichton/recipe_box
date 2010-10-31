@@ -254,3 +254,19 @@ $width: 800px;
 h2 a {
   text-decoration: none;
 }
+
+.new-comment {
+  textarea {
+    width: 500px;
+    height: 100px;
+  }
+}
+
+.comment {
+  border-top: 1px solid #ccc;
+
+  .credit {
+    color: #888;
+    font-size: 12px;
+  }
+}

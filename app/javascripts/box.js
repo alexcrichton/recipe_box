@@ -12,10 +12,10 @@ $(function() {
     return false;
   });
 
-  $('a[data-remote]').live('ajax:before', function() {
+  $('a[data-remote]:not(.nohash)').live('ajax:before', function() {
     window.location.hash = $(this).attr('href');
   });
-  
+
   $(window).hashchange(function() {
     if (window.location.hash == '#' || window.location.hash == '') {
       return;

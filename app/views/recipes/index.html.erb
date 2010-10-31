@@ -5,4 +5,5 @@
     <%= link_to 'New Recipe', new_recipe_path, :remote => true %>
   </div>
 <% end %>
+
 <%= will_paginate @recipes, :renderer => WillPaginate::AjaxLinkRenderer %>

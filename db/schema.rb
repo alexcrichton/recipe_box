@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101030231251) do
+ActiveRecord::Schema.define(:version => 20101030231612) do
 
   create_table "categories", :force => true do |t|
     t.string    "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20101030231251) do
     t.timestamp "updated_at"
     t.string    "slug"
     t.integer   "user_id"
+    t.integer   "comments_count"
   end
 
   add_index "recipes", ["category_id"], :name => "index_recipes_on_category_id"

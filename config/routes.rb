@@ -12,6 +12,8 @@ RecipeBox::Application.routes.draw do
       get :category_search
       get :ingredient_search
     end
+
+    resources :comments
   end
 
   get 'friends' => 'users#friends'

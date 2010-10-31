@@ -1,0 +1,14 @@
+<div class='new-comment'>
+  <%= form_for [@recipe, @comment || @recipe.comments.build],
+      :remote => true do |f| %>
+
+    <%= render 'shared/error_messages', :target => f.object %>
+
+    <div><%= f.text_area :comment %></div>
+
+    <p>
+      <%= f.submit :disable_with => 'Commenting...' %>
+      <%= link_to 'cancel', [@recipe, :comments], :class => 'cancel' %>
+    </p>
+  <% end %>
+</div>

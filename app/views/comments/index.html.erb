@@ -1,0 +1,12 @@
+<h1>Comments on <%= @recipe.name %></h1>
+
+<div id='comments'>
+  <div id='new-comment'></div>
+
+  <%= render @comments %>
+</div>
+
+<div id='bottom-links'>
+  <%= link_to 'New Comment', [:new, @recipe, :comment], :remote => true,
+        :class => 'nohash' %>
+</div>

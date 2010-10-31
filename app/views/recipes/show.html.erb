@@ -24,6 +24,11 @@
   <%= link_to 'Download',
           polymorphic_path([@user, @recipe], :format => 'pdf') %> |
 
+  <% if can? :comment, @recipe %>
+    <%= link_to pluralize(@recipe.comments_count, 'Comment'),
+          [@recipe, :comments], :remote => true %> |
+  <% end %>
+
   <% if can? :destroy, @recipe %>
     <%= link_to 'Remove Recipe', @recipe, :method => :delete, :remote => true,
           :confirm => 'Are you sure?' %> |
