@@ -10,10 +10,6 @@ a img {
   border: none;
 }
 
-a {
-  color: #0000FF;
-}
-
 .clear {
   clear: both;
   height: 0;
@@ -56,7 +52,7 @@ a {
   margin-bottom: 20px;
   background-color: #f0f0f0;
   font-size: 12px;
-  
+
   h2 {
     text-align: left;
     font-weight: bold;
@@ -76,9 +72,8 @@ a {
   }
 }
 
-
-dl { 
-  margin: 5px 0; 
+dl {
+  margin: 5px 0;
 
   dt {
     width: 12em;
@@ -87,19 +82,19 @@ dl {
     text-align: right;
     color: #333;
 
-  	.field_with_errors {
-  	  margin: 0;
-  	  padding: 0;
-	  }
+    .field_with_errors {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   dd {
-  	margin-left: 12.5em;
-  	
-  	.field_with_errors {
-  	  margin: 0;
-  	  padding: 0;
-	  }
+    margin-left: 12.5em;
+
+    .field_with_errors {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
@@ -115,13 +110,7 @@ dl {
     border: none;
   }
 
-  h2.recipe {
-    a {
-      display: none;
-    }
-  }
-
-  #bottom-links {
+  #bottom-links, #buttons, h2.recpie a, #card > a.close {
     display: none;
   }
 }
