@@ -10,12 +10,6 @@ a img {
   border: none;
 }
 
-.clear {
-  clear: both;
-  height: 0;
-  overflow: hidden;
-}
-
 #container {
   width: 75%;
   margin: 0 auto;
@@ -38,38 +32,6 @@ a img {
 #flash_error, #flash_alert {
   background-color: #FCC;
   border: solid 1px #C66;
-}
-
-.fieldWithErrors {
-  display: inline;
-}
-
-.error_messages {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
-
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 10px;
-    font-size: 12px;
-    margin: 0;
-    background-color: #c00;
-    color: #fff;
-  }
-
-  p {
-    margin: 8px 10px;
-  }
-
-  ul {
-    margin: 0;
-  }
 }
 
 dl {
