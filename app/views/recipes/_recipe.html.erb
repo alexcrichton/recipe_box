@@ -1,5 +1,7 @@
 <div class='recipe'>
-  <%= link_to recipe.name, [@user, recipe], :remote => true %>
+  <% user = params[:friends] ? recipe.user : @user %>
+  <% user = nil if user == current_user %>
+  <%= link_to recipe.name, [user, recipe], :remote => true %>
 
   <% if recipe.category.present? %>
     (<%= recipe.category.name %>)

@@ -16,6 +16,11 @@ class RecipesController < ApplicationController
   end
 
   def search
+    if params[:friends] == '1'
+      ids = [current_user.id] + current_user.friends.map(&:id)
+      @recipes = Recipe.where(:user_id => ids)
+    end
+
     if params[:q].present?
       @recipes = @recipes.search params[:q]
     end

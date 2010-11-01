@@ -7,7 +7,7 @@
             :placeholder => 'Search', :autofocus => true %>
 
       <span class='friends'>
-        <%= check_box_tag :friends %>
+        <%= check_box_tag :friends, '1', params[:friends] == '1' %>
         <%= label_tag :friends, 'Search Friends' %>
       </span>
     </div>
