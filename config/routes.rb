@@ -3,7 +3,7 @@ RecipeBox::Application.routes.draw do
 
   scope ':user_id', :as => 'user', :constraints => {:user_id => user_regex } do
     resources :recipes, :only => [:index, :show] do
-      resources :comments
+      resources :comments, :only => [:new, :index, :create]
     end
   end
 
@@ -15,7 +15,7 @@ RecipeBox::Application.routes.draw do
       get :ingredient_search
     end
 
-    resources :comments
+    resources :comments, :only => [:new, :index, :create]
   end
 
   get 'friends' => 'users#friends'
