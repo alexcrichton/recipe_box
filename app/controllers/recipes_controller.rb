@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
   end
 
   def search
+    params.delete :utf8
     if params[:friends] == '1'
       ids = [current_user.id] + current_user.friends.map(&:id)
       @recipes = Recipe.where(:user_id => ids)
