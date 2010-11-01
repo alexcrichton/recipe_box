@@ -25,8 +25,13 @@ class RecipesController < ApplicationController
       @recipes = @recipes.search params[:q]
     end
 
+    # PostgreSQL doesn't like this without :total_entries because apparently
+    # calling :count on the collection then throws an invalid SQL exception.
+    # The count is called by will_paginate, and who knows why it's broken, but
+    # this seems to work for now...
     @recipes = @recipes.order('recipes.name').
-        paginate(:page => params[:page], :per_page => 10)
+        paginate(:page => params[:page], :per_page => 10,
+                 :total_entries => @recipes.group('recipes.id').count.size)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
