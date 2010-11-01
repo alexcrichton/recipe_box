@@ -5,8 +5,9 @@
   <% if can? :update, @recipe %>
     <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
   <% end %>
-</h2>
 
+  <fb:like href='<%= polymorphic_url [@recipe.user, @recipe] %>' layout='button_count'/>
+</h2>
 
 <div class='scroll'>
   <ul>
@@ -24,8 +25,6 @@
 </div>
 
 <div id='bottom-links'>
-  <fb:like href='<%= polymorphic_url [@recipe.user, @recipe] %>'/>
-  <br/>
   <%= link_to 'Download',
           polymorphic_path([@user, @recipe], :format => 'pdf') %> |
 
