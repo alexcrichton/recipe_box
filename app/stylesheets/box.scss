@@ -67,7 +67,7 @@ $width: 800px;
   font-family: "ReenieBeanie";
   font-size: 23px;
 
-  .add, .search, .friends, .myfriends {
+  .add, .search, .mine, .myfriends {
     position: absolute;
     display: inline-block;
     text-decoration: none;
@@ -78,7 +78,7 @@ $width: 800px;
     }
   }
 
-  .add, .friends {
+  .add, .mine {
     left: 0;
     top: 0;
 
@@ -107,10 +107,14 @@ $width: 800px;
     height: 62px;
   }
 
-  .friends {
+  .mine {
     background-image: image-url('tape1.png');
     width: 153px;
     height: 72px;
+
+    span {
+      margin: 10px;
+    }
   }
 
   .search {

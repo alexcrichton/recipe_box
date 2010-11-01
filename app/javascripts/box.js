@@ -2,7 +2,7 @@
 //= require <jquery/hashchange>
 
 $(function() {
-  $('#buttons a').click(function() {
+  $('#buttons a[data-remote]').click(function() {
     $('#card').addClass('start').removeClass('end');
   });
 
