@@ -7,18 +7,21 @@
   <% end %>
 </h2>
 
-<ul>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <li>
-      <% if ingredient.quantity.present? %>
-        <%= ingredient.quantity %> &mdash;
-      <% end %>
-      <%= ingredient.name %>
-    </li>
-  <% end %>
-</ul>
 
-<%= markdown @recipe.directions %>
+<div class='scroll'>
+  <ul>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li>
+        <% if ingredient.quantity.present? %>
+          <%= ingredient.quantity %> &mdash;
+        <% end %>
+        <%= ingredient.name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= markdown @recipe.directions %>
+</div>
 
 <div id='bottom-links'>
   <fb:like href='<%= polymorphic_url [@recipe.user, @recipe] %>'/>
