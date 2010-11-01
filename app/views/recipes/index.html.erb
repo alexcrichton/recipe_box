@@ -5,6 +5,11 @@
     <div>
       <%= text_field_tag :q, params[:q], :autocomplete => 'off',
             :placeholder => 'Search', :autofocus => true %>
+
+      <span class='friends'>
+        <%= check_box_tag :friends %>
+        <%= label_tag :friends, 'Search Friends' %>
+      </span>
     </div>
   <% end %>
 </div>

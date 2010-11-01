@@ -234,15 +234,36 @@ $width: 800px;
     padding: 20px;
   }
 
-  .search #q {
-    display: block;
-    font-size: 2em;
-    width: 80%;
-    margin: 0 auto;
-    clear: both;
+  .search {
+    #q {
+      font-size: 2em;
+      width: 80%;
+      float: left;
+    }
+  }
+
+  .friends {
+    display: inline-block;
+    width: 15%;
+
+    * {
+      float: left;
+      display: inline-block;
+    }
+
+    input {
+      margin: 18px 10px 0 10px;
+    }
+
+    label {
+      margin-top: 5px;
+      width: 60%;
+    }
   }
 
   #results {
+    clear: both;
+
     .recipe {
       font-size: 1.6em;
     }
