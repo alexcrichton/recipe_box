@@ -4,6 +4,7 @@ gem 'rails', '3.0.1'
 
 gem 'mongoid', '>= 2.0.0.beta'
 gem 'bson_ext'
+gem 'mongoid_search'
 
 gem 'cancan'
 gem 'devise'

@@ -2,9 +2,6 @@ $('#ingredients a.add').die('click').live('click', function(e) {
   var html = $('#new-ingredient').html();
   html = $(html.replace(/REPLACE_ME/g, new Date().getTime().toString()));
   $('#ingredients').append(html);
-  html.find('.ingredient:text').autocomplete(
-    '/recipes/ingredient_search', {selectFirst:false});
-
   html.find('.quantity').focus();
 
   e.preventDefault();

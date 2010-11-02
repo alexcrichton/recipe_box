@@ -96,6 +96,8 @@ GEM
       mongo (= 1.0.9)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
+    mongoid_search (0.1.2)
+      mongoid (~> 2.0.0.beta)
     multi_json (0.0.4)
     multipart-post (1.0.1)
     nokogiri (1.4.3.1)
@@ -180,6 +182,7 @@ DEPENDENCIES
   heroku
   mini_fb
   mongoid (>= 2.0.0.beta)
+  mongoid_search
   oa-oauth
   paste!
   pdfkit

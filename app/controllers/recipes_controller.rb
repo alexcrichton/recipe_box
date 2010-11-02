@@ -79,17 +79,9 @@ class RecipesController < ApplicationController
   end
 
   def category_search
-    @categories = Category.search(params[:q]).limit(params[:limit]).
-      select('DISTINCT(name)')
+    @categories = Category.search(params[:q]).limit(params[:limit].to_i)
 
     render :text => @categories.map(&:name).join("\n")
-  end
-
-  def ingredient_search
-    @ingredients = Ingredient.search(params[:q]).limit(params[:limit]).
-      select('DISTINCT(name)')
-
-    render :text => @ingredients.map(&:name).join("\n")
   end
 
   protected

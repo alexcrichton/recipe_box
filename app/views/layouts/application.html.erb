@@ -3,8 +3,10 @@
   <head>
     <title><%= show_title? ? yield(:title) : 'Recipe Box' %></title>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <%= javascripts 'box', 'rails', 'jquery/autocomplete' %>
+
     <%= stylesheet_tags 'box', 'recipes/form', 'pagination' %>
-    <%= javascript_tags 'box', 'rails', 'jquery/autocomplete' %>
+    <%= javascript_tags  %>
     <%= csrf_meta_tag %>
     <meta property='og:site_name' content='Recipe Box'/>
   </head>
