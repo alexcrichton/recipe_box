@@ -99,7 +99,9 @@ class RecipesController < ApplicationController
     category = Category.where(:name => name).first
 
     if category
-      params[:recipe][:category_id] = category.id
+      params[:recipe][:category] = category
+    elsif name.present?
+      params[:recipe][:category] = Category.create! :name => name
     end
   end
 end

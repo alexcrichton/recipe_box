@@ -11,6 +11,7 @@ class Recipe
   referenced_in :category
   referenced_in :user
 
+  validates_associated :category
   validates_presence_of :name, :directions, :slug, :user_id
   validates_uniqueness_of :name, :slug, :scope => :user_id
 

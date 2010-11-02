@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :through => :recipe
 
   def index
-    respond_with @comments
+    respond_with @comments = @recipe.comments
   end
 
   def new
@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment.commentable = @recipe
     @comment.user = current_user
     @comment.save
 
