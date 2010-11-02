@@ -1,10 +1,15 @@
-class Ingredient < ActiveRecord::Base
-  belongs_to :recipe
+class Ingredient
+  include Mongoid::Document
+
+  field :quantity
+  field :name
+
+  embedded_in :recipe, :inverse_of => :ingredients
 
   validates_presence_of :name
   after_save :parse_quantity
 
-  scope :search, lambda { |query| 
+  scope :search, lambda { |query|
     if query.blank?
       where(:id => 0)
     else
@@ -12,27 +17,4 @@ class Ingredient < ActiveRecord::Base
     end
   }
 
-  def parsed_quantity
-    Marshal.load self[:parsed_quantity]
-  rescue
-    nil
-  end
-  
-  protected
-  
-  def parse_quantity
-    # TODO: get this working again
-    # return if quantity.blank?
-    # quantity, unit = self[:quantity].split ' '
-    # 
-    # quantity = Rational(*(quantity.split('/').map(&:to_i))).to_f
-    # 
-    # parsed_quantity = begin
-    #   quantity.send unit.gsub(/\W/, '')
-    # rescue NoMethodError
-    #   nil
-    # end
-    # 
-    # self[:parsed_quantity] = Marshal.dump parsed_quantity
-  end
 end

@@ -1,10 +1,19 @@
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
+
+  field :fb_uid
+  field :access_token
+  field :email
+  field :name
+  field :fb_username
+  field :timezone, :type => Integer
+
+  references_many :recipes
+
   devise :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :fb_uid
-
-  has_many :recipes
 
   validates_uniqueness_of :email, :fb_uid
   validates_presence_of :name

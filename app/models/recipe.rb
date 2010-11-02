@@ -1,8 +1,11 @@
-class Recipe < ActiveRecord::Base
-  has_many :ingredients
-  has_many :comments, :as => :commentable
-  belongs_to :category
-  belongs_to :user
+class Recipe
+  include Mongoid::Document
+
+  embeds_many :ingredients
+  embeds_many :comments
+
+  referenced_in :category
+  referenced_in :user
 
   validates_presence_of :name, :directions, :slug, :user_id
   validates_uniqueness_of :name, :slug, :scope => :user_id

@@ -1,8 +1,12 @@
-class Category < ActiveRecord::Base
+class Category
+  include Mongoid::Document
+
+  field :name
+
   validates_presence_of :name
   validates_uniqueness_of :name
-  
-  scope :search, lambda { |query| 
+
+  scope :search, lambda { |query|
     if query.blank?
       where(:id => 0)
     else

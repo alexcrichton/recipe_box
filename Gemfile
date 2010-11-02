@@ -2,6 +2,9 @@ source :rubygems
 
 gem 'rails', '3.0.1'
 
+gem 'mongoid', '>= 2.0.0.beta'
+gem 'bson_ext'
+
 gem 'cancan'
 gem 'devise'
 gem 'oa-oauth', :require => 'omniauth/oauth'
@@ -20,8 +23,6 @@ group :development, :test do
   gem 'heroku'
   gem 'taps'
 
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-
   gem 'rspec-rails'
 end
 
@@ -31,6 +32,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'dalli'
 end
