@@ -22,7 +22,6 @@ gem 'pdfkit'
 
 group :development, :test do
   gem 'heroku'
-  gem 'taps'
 
   gem 'rspec-rails'
 end
