@@ -26,7 +26,7 @@ class User
 
   def friends refresh = false
     @friends = nil if refresh
-    @friends ||= User.where :fb_uid => friend_uids.map(&:id)
+    @friends ||= User.where :fb_uid.in => friend_uids.map(&:id)
   end
 
   def to_param

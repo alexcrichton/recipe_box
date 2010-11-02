@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
 
   def load_user
     if params[:user_id]
-      @user = User.find_by_fb_username(params[:user_id]) ||
-        User.find_by_fb_uid!(params[:user_id])
+      @user = (User.where(:fb_username => params[:user_id]).first ||
+        User.where(:fb_uid => params[:user_id]).first) or
+        raise Mongoid::Errors::DocumentNotFound
     end
   end
 
