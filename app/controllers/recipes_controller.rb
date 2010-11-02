@@ -9,7 +9,8 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @recipes = @recipes.order(:name).
+    scope = @user ? @user : current_user
+    @recipes = scope.recipes.order_by(:name.asc).
         paginate(:page => params[:page], :per_page => 10)
 
     respond_with @recipes
@@ -94,11 +95,10 @@ class RecipesController < ApplicationController
   protected
 
   def set_category_id
-    name = params[:recipe][:category_attributes][:name]
-    category = Category.find_by_name(name)
+    name = params[:recipe].delete :category_name
+    category = Category.where(:name => name).first
 
     if category
-      params[:recipe].delete(:category_attributes)
       params[:recipe][:category_id] = category.id
     end
   end

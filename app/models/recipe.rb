@@ -1,6 +1,10 @@
 class Recipe
   include Mongoid::Document
 
+  field :directions
+  field :name
+  field :slug
+
   embeds_many :ingredients
   embeds_many :comments
 
@@ -12,9 +16,10 @@ class Recipe
 
   before_validation :set_slug_from_name
 
-  accepts_nested_attributes_for :ingredients, :reject_if => :all_blank,
+  ALL_BLANK = Proc.new{ |h| h.all?{ |_, v| v.blank? } }
+
+  accepts_nested_attributes_for :ingredients, :reject_if => ALL_BLANK,
       :allow_destroy => true
-  accepts_nested_attributes_for :category, :reject_if => :all_blank
 
   scope :search, lambda { |query|
     if query.blank?
@@ -26,6 +31,14 @@ class Recipe
       ).group(Recipe.column_names.map{ |c| "recipes.#{c}" }) # for postgresql
     end
   }
+
+  def self.find_by_slug! slug
+    where(:slug => slug).first or raise Mongoid::Errors::DocumentNotFound
+  end
+
+  def category_name
+    category.try(:name)
+  end
 
   def to_param
     self[:slug]

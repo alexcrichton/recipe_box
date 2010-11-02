@@ -29,7 +29,7 @@
           polymorphic_path([@user, @recipe], :format => 'pdf') %> |
 
   <% if can? :comment, @recipe %>
-    <%= link_to pluralize(@recipe.comments_count, 'Comment'),
+    <%= link_to pluralize(@recipe.comments.count, 'Comment'),
           [@user, @recipe, :comments], :remote => true %> |
   <% end %>
 

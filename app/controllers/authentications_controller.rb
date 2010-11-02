@@ -3,7 +3,8 @@ class AuthenticationsController < ApplicationController
   def create
     omniauth = request.env['omniauth.auth']
 
-    user = User.find_or_create_by_fb_uid(omniauth['uid'])
+    user = User.where(:fb_uid => omniauth['uid']).first
+    user ||= User.new :fb_uid => omniauth['uid']
     user.apply_omniauth(omniauth)
     user.save!
 

@@ -9,10 +9,8 @@
       <dt><%= f.label :name %></dt>
       <dd><%= f.text_field :name %></dd>
 
-      <%= f.fields_for :category, @recipe.category || Category.new do |f2| %>
-        <dt><%= f2.label :name, 'Category' %></dt>
-        <dd><%= f2.text_field :name %></dd>
-      <% end %>
+      <dt><%= f.label :category_name, 'Category' %></dt>
+      <dd><%= f.text_field :category_name %></dd>
     </dl>
 
     <div>
