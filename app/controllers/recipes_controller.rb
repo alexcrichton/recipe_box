@@ -18,22 +18,20 @@ class RecipesController < ApplicationController
 
   def search
     params.delete :utf8
-    if params[:friends] == '1'
+
+    @recipes = if params[:friends] == '1'
       ids = [current_user.id] + current_user.friends.map(&:id)
-      @recipes = Recipe.where(:user_id => ids)
+      Recipe.where(:user_id => ids)
+    else
+      Recipe.where(:user_id => current_user.id)
     end
 
     if params[:q].present?
       @recipes = @recipes.search params[:q]
     end
 
-    # PostgreSQL doesn't like this without :total_entries because apparently
-    # calling :count on the collection then throws an invalid SQL exception.
-    # The count is called by will_paginate, and who knows why it's broken, but
-    # this seems to work for now...
-    @recipes = @recipes.order('recipes.name').
-        paginate(:page => params[:page], :per_page => 10,
-                 :total_entries => @recipes.group('recipes.id').count.size)
+    @recipes = @recipes.order_by(:name.asc).paginate(:page => params[:page],
+        :per_page => 10)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }
