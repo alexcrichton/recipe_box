@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
       ids = [current_user.id] + current_user.friends.map(&:id)
       Recipe.where(:user_id.in => ids)
     elsif @user
+      # CanCan doesn't support accessible_by in Mongoid yet :(
       Recipe.where(:user_id => @user.id)
     else
       Recipe.where(:user_id => current_user.id)
