@@ -9,12 +9,7 @@ a {
   }
 }
 
-/*@import "compass/css3/font-face";*/
-/*@include font-face(ReenieBeanie, font-files('ReenieBeanie.ttf', ttf));*/
-@font-face {
-  font-family: ReenieBeanie;
-  src: url(/fonts/ReenieBeanie.ttf);
-}
+@include font-face(ReenieBeanie, font-files('ReenieBeanie.ttf', truetype));
 
 body {
   background: none;
