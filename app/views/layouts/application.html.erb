@@ -3,7 +3,7 @@
   <head>
     <title><%= show_title? ? yield(:title) : 'Recipe Box' %></title>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
-    <%= javascripts 'box', 'rails', 'jquery/autocomplete' %>
+    <% javascripts 'box', 'rails', 'jquery/autocomplete' %>
 
     <%= stylesheet_tags 'box', 'recipes/form', 'pagination' %>
     <%= javascript_tags  %>
@@ -36,7 +36,7 @@
       </div>
 
       <div id='card'<%= %( class='start').html_safe unless yield.blank? %>>
-        <%= link_to 'go back', '#', :class => 'close' %>
+        <%= link_to 'go back', root_path, :class => 'close', :remote => true %>
 
         <div class='content'>
           <%= yield %>

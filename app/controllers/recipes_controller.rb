@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
   def box
     respond_to do |format|
       format.html
+      format.js
     end
   end
 

@@ -1,5 +1,4 @@
 //= require <jquery>
-//= require <jquery/hashchange>
 
 $(function() {
   $('#buttons a[data-remote]').click(function() {
@@ -8,24 +7,16 @@ $(function() {
 
   $('#card > a.close').click(function() {
     $('#card').removeClass('start').addClass('end');
-    window.location.hash = '';
-    return false;
   });
 
   $('a[data-remote]:not(.nohash)').live('ajax:before', function() {
-    window.location.hash = $(this).attr('href');
+    $('#card').addClass('loading').find('.content').empty();
+    history.pushState({path: this.path}, '', this.href);
+  }).live('ajax:complete', function() {
+    $('#card').removeClass('loading');
   });
 
-  $(window).hashchange(function() {
-    if (window.location.hash == '#' || window.location.hash == '') {
-      return;
-    }
-
-    $('#card').addClass('start').removeClass('end');
-
-    $.ajax({
-      url: window.location.hash.substr(1),
-      dataType: 'script'
-    });
-  }).hashchange();
+  $(window).bind('popstate', function(event) {
+    $.get(location.pathname);
+  });
 });
