@@ -9,7 +9,7 @@ $(function() {
     $('#card').removeClass('start').addClass('end');
   });
 
-  $('a[data-remote]:not(.nohash)').live('ajax:before', function() {
+  $('a[data-remote]:not(.nomove)').live('ajax:before', function() {
     $('#card').addClass('loading').find('.content').empty();
     history.pushState({path: this.path}, '', this.href);
   }).live('ajax:complete', function() {
