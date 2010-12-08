@@ -1,13 +1,16 @@
 //= require <jquery>
 
-$(function() {
-  $('#buttons a[data-remote]').click(function() {
-    $('#card').addClass('start').removeClass('end');
-  });
+window.showCard = function() {
+  $('#card:visible').addClass('start').removeClass('end');
+};
 
-  $('#card > a.close').click(function() {
-    $('#card').removeClass('start').addClass('end');
-  });
+window.hideCard = function() {
+  $('#card:visible').addClass('end').removeClass('start');
+};
+
+$(function() {
+  $('#buttons a[data-remote]').click(showCard);
+  $('#card > a.close').click(hideCard);
 
   $('a[data-remote]:not(.nomove)').live('ajax:before', function() {
     $('#card').addClass('loading').find('.content').empty();
@@ -17,6 +20,6 @@ $(function() {
   });
 
   $(window).bind('popstate', function(event) {
-    $.get(location.pathname);
+    $.ajax({url:location.pathname, dataType: 'script'});
   });
 });
