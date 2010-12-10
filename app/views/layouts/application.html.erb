@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= show_title? ? yield(:title) : 'Recipe Box' %></title>
-    <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <% stylesheet 'application', :media => 'all' %>
     <% javascripts 'box', 'rails', 'jquery/autocomplete' %>
 
     <%= stylesheet_tags 'box', 'recipes/form', 'pagination' %>
