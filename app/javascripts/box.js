@@ -1,7 +1,8 @@
 //= require <jquery>
 
 window.showCard = function() {
-  $('#card:visible').addClass('start').removeClass('end');
+  if (!$('#card').hasClass('start'))
+    $('#card').addClass('start').removeClass('end');
 };
 
 window.hideCard = function() {
