@@ -26,7 +26,8 @@ class Recipe
       :allow_destroy => true
 
   def self.find_by_slug! slug
-    where(:slug => slug).first or raise Mongoid::Errors::DocumentNotFound
+    where(:slug => slug).first or
+      raise Mongoid::Errors::DocumentNotFound.new(self.class, :slug => slug)
   end
 
   def category_name

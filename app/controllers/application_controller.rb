@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
     if params[:user_id]
       @user = (User.where(:fb_username => params[:user_id]).first ||
         User.where(:fb_uid => params[:user_id]).first) or
-        raise Mongoid::Errors::DocumentNotFound
+          raise Mongoid::Errors::DocumentNotFound.new(User,
+            :fb_uid => params[:user_id])
     end
   end
 
