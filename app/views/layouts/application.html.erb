@@ -16,15 +16,14 @@
 
       <div id='buttons'>
         <%= link_to content_tag(:span, 'Add recipe'),
-              new_recipe_path, :remote => true, :class => 'add' %>
+              new_recipe_path, :class => 'add' %>
 
         <%= link_to content_tag(:span, 'Search'),
-              :recipes, :remote => true, :class => 'search' %>
+              :recipes, :class => 'search' %>
       </div>
 
-      <div id='card'<%= %( class='start').html_safe unless yield.blank? %>
-           data-pjax-container>
-        <%= link_to 'go back', root_path, :class => 'close', :remote => true %>
+      <div id='card'>
+        <%= link_to 'go back', root_path, :class => 'close' %>
 
         <div class='content'>
           <%= yield %>

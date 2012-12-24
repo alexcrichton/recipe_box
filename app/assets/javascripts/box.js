@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.pjax
 
 window.showCard = function() {
   if (!$('#card').hasClass('start'))
@@ -8,23 +9,27 @@ window.showCard = function() {
 
 window.hideCard = function() {
   $('#card:visible').addClass('end').removeClass('start');
+  return false;
 };
 
-window.setContent = function(html) {
-  showCard();
-  $('#card').removeClass('loading').find('.content').html(html);
-};
+// window.setContent = function(html) {
+//   showCard();
+// };
 
 $(function() {
-  $('#buttons a[data-remote]').click(showCard);
+  if ($('#card .content').html().match(/^\s+$/) == null)
+    $('#card').show();
+  $('#buttons a').click(showCard);
   $('#card > a.close').click(hideCard);
 
-  $(document).delegate('a[data-remote]:not(.nomove)', 'ajax:before', function() {
-    $('#card').addClass('loading').find('.content').empty();
-    history.pushState({path: this.path}, '', this.href);
+  $(document).delegate('a:not([data-remote])', 'click', function(event) {
+    $.pjax.click(event, $('#card .content'));
   });
 
-  $(window).bind('popstate', function(event) {
-    $.ajax({url:location.pathname, dataType: 'script'});
+  $(document).on('pjax:start', function() {
+    $('#card').addClass('loading').find('.content').empty();
+  });
+  $(document).on('pjax:complete', function() {
+    $('#card').removeClass('loading');
   });
 });

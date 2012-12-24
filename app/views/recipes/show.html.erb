@@ -2,7 +2,7 @@
 
 <h2 class='recipe'>
   <%= @recipe.name %>
-  <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
+  <%= link_to '[edit]', [:edit, @recipe] %>
 </h2>
 
 <div class='scroll'>
@@ -21,9 +21,9 @@
 </div>
 
 <div id='bottom-links'>
-  <%= link_to 'Remove Recipe', @recipe, :method => :delete, :remote => true,
+  <%= link_to 'Remove Recipe', @recipe, :method => :delete,
         :confirm => 'Are you sure?' %> |
 
-  <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
-  <%= link_to 'All Recipes', recipes_path, :remote => true %>
+  <%= link_to 'Add Recipe', new_recipe_path %> |
+  <%= link_to 'All Recipes', recipes_path %>
 </div>

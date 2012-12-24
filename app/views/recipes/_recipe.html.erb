@@ -1,5 +1,5 @@
 <div class='recipe'>
-  <%= link_to recipe.name, recipe, :remote => true %>
+  <%= link_to recipe.name, recipe %>
 
   <% if recipe.category.present? %>
     (<%= recipe.category.name %>)
