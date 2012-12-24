@@ -1,5 +1,3 @@
-//= require <jquery>
-//= require_css <jquery/autocomplete>
 /**
  * @license
  * jQuery Autocomplete plugin 1.1

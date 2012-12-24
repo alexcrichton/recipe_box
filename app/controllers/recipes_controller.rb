@@ -12,12 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.scoped
-
-    if params[:q].present?
-      @recipes = @recipes.search params[:q]
-    end
-
+    @recipes = Recipe.search(params[:q])
     @recipes = @recipes.order_by(:name.asc).page(params[:page]).per(10)
 
     respond_with @recipes do |format|
@@ -28,7 +23,6 @@ class RecipesController < ApplicationController
   def box
     respond_to do |format|
       format.html
-      format.js
     end
   end
 

@@ -1,3 +1,5 @@
+//= require jquery/autocomplete
+//
 $(function() {
   $(document).delegate('form a.add', 'click', function() {
     var html = $('#new-ingredient').html();
@@ -24,4 +26,9 @@ $(function() {
     }
   });
 
+  var bind = function() {
+    $('form #recipe_category_name').autocomplete('/recipes/category_search');
+  };
+  $(document).on('pjax:complete', bind);
+  bind();
 });

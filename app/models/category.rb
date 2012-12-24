@@ -4,6 +4,7 @@ class Category
   field :name
 
   # search_in :name
+  scope :search, lambda { |q| where(:name => /#{q}/i) }
 
   has_many :recipes
 
