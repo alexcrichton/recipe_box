@@ -30,7 +30,7 @@ $(function() {
   $(document).on('pjax:start', function() {
     $('#card').addClass('loading').find('.content').empty();
   });
-  $(document).on('pjax:complete', function() {
+  $(document).on('pjax:end', function() {
     $('#card').removeClass('loading');
   });
 });
