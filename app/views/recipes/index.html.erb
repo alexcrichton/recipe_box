@@ -7,14 +7,13 @@
             :placeholder => 'Search', :autofocus => true %>
     </div>
   <% end %>
+
+  <div class='friends'>
+    <%= link_to 'New Recipe', new_recipe_path %>
+  </div>
 </div>
 
 <div id='results' class='pagination-container'>
   <%= render @recipes %>
-
-  <div id='bottom-links'>
-    <%= link_to 'New Recipe', new_recipe_path %>
-  </div>
-
   <%= paginate @recipes %>
 </div>
