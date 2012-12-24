@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   before_filter :set_category_id, :only => [:update, :create]
-  before_filter :load, :only => [:show, :edit, :destroy]
+  before_filter :load, :only => [:show, :edit, :update, :destroy]
 
   respond_to :html, :js
 

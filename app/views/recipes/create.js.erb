@@ -1,6 +1,2 @@
-<% if @recipe.errors.any? %>
-  setContent("<%=j render(:template => 'recipes/new.html') %>");
-  <%= render 'form_bind' %>
-<% else %>
-  <%= render :template => 'recipes/show' %>
-<% end %>
+setContent("<%=j render(:template => @recipe.errors.any? ? 'recipes/new' :
+                                       'recipes/show', :formats => [:html]) %>");

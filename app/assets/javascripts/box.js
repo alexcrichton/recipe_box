@@ -13,6 +13,10 @@ window.hideCard = function() {
   return false;
 };
 
+window.setContent = function(html) {
+  $('#card .content').html(html);
+};
+
 $(function() {
   if ($('#card .content').html().match(/^\s+$/) == null)
     $('#card').show();
