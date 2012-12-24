@@ -1,5 +1,6 @@
 class Recipe
   include Mongoid::Document
+  include Mongoid::Search
 
   field :directions
   field :name
@@ -9,7 +10,7 @@ class Recipe
 
   belongs_to :category
 
-#   search_in :name, :category => :name, :ingredients => :name
+  search_in :name, :category => :name, :ingredients => :name
 
   validates_associated :category
   validates_presence_of :name, :directions, :slug
@@ -21,8 +22,6 @@ class Recipe
 
   accepts_nested_attributes_for :ingredients, :reject_if => ALL_BLANK,
       :allow_destroy => true
-
-  scope :search, lambda { |q| where(:name => /#{q}/i) }
 
   def self.find_by_slug! slug
     where(:slug => slug).first or

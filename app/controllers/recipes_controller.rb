@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search(params[:q])
+    @recipes = Recipe.full_text_search(params[:q], match: :all)
     @recipes = @recipes.order_by(:name.asc).page(params[:page]).per(10)
 
     respond_with @recipes do |format|
@@ -61,7 +61,7 @@ class RecipesController < ApplicationController
   end
 
   def category_search
-    @categories = Category.search(params[:q]).limit(params[:limit].to_i)
+    @categories = Category.full_text_search(params[:q]).limit(params[:limit].to_i)
 
     render :text => @categories.map(&:name).join("\n")
   end
@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
   protected
 
   def load
-    @recipe = Recipe.where(:slug => params[:id]).first
+    @recipe = Recipe.find_by(:slug => params[:id])
   end
 
   def set_category_id

@@ -1,10 +1,10 @@
 class Category
   include Mongoid::Document
+  include Mongoid::Search
 
   field :name
 
-  # search_in :name
-  scope :search, lambda { |q| where(:name => /#{q}/i) }
+  search_in :name
 
   has_many :recipes
 

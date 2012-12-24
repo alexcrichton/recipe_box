@@ -5,7 +5,7 @@ ruby '1.9.3'
 gem 'rails', '3.2.9'
 
 gem 'mongoid'
-gem 'bson_ext'
+gem 'mongoid_search'
 
 gem 'kaminari'
 gem 'redcarpet'
