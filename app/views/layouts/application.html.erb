@@ -4,10 +4,6 @@
     <title><%= show_title? ? yield(:title) : 'Recipe Box' %></title>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
     <%= javascript_include_tag 'box' %>
-    <%# javascripts 'box', 'rails', 'jquery/autocomplete' %>
-
-    <%#= stylesheet_tags 'box', 'recipes/form', 'pagination' %>
-    <%#= javascript_tags  %>
     <%= csrf_meta_tag %>
   </head>
   <body>
