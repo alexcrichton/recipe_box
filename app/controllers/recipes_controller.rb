@@ -12,22 +12,13 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = if params[:friends] == '1'
-      ids = [current_user.id] + current_user.friends.map(&:id)
-      Recipe.where(:user_id.in => ids)
-    elsif @user
-      # CanCan doesn't support accessible_by in Mongoid yet :(
-      Recipe.where(:user_id => @user.id)
-    else
-      Recipe.where(:user_id => current_user.id)
-    end
+    @recipes = Recipe.scoped
 
     if params[:q].present?
       @recipes = @recipes.search params[:q]
     end
 
-    @recipes = @recipes.order_by(:name.asc).paginate(:page => params[:page],
-        :per_page => 10)
+    @recipes = @recipes.order_by(:name.asc).page(params[:page]).per(10)
 
     respond_with @recipes do |format|
       format.html { render :action => 'index' }

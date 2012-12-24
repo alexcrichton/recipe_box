@@ -6,7 +6,7 @@
   dt {
     width: 50px;
   }
-  
+
   dd {
     margin-left: 80px;
   }
@@ -15,25 +15,30 @@
 .col1 {
   float: left;
   width: 45%;
-  
+
   input[type=text] {
     width: 215px;
   }
-  
+
   textarea {
     height: 260px;
     width: 295px;
+  }
+
+  .format {
+    float: right;
+    font-size: 80%;
   }
 }
 
 .col2 {
   float: right;
   width: 50%;
-  
+
   h4 {
     margin: 0 0 12px 0;
   }
-  
+
   div:even {
     text-align: right
   }
@@ -48,7 +53,7 @@
       margin-left: 10px;
       float: left;
     }
-    
+
     .close {
       display: none;
       float: left;
@@ -59,10 +64,10 @@
       font-weight: bold;
       cursor: pointer;
     }
-    
+
     &:hover {
       background: #f8f4df;
-      
+
       .close {
         display: block;
       }

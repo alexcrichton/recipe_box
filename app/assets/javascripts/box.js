@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.pjax
+//= require recipe
 
 window.showCard = function() {
   if (!$('#card').hasClass('start'))
@@ -11,10 +12,6 @@ window.hideCard = function() {
   $('#card:visible').addClass('end').removeClass('start');
   return false;
 };
-
-// window.setContent = function(html) {
-//   showCard();
-// };
 
 $(function() {
   if ($('#card .content').html().match(/^\s+$/) == null)

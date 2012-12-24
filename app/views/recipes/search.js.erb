@@ -1,1 +1,2 @@
-setContent("<%=j render(:template => 'recipes/index.html') %>");
+$('#card .content').html(
+  "<%=j render(:template => 'recipes/index', :formats => [:html]) %>")

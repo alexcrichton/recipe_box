@@ -22,6 +22,8 @@ class Recipe
   accepts_nested_attributes_for :ingredients, :reject_if => ALL_BLANK,
       :allow_destroy => true
 
+  scope :search, lambda { |q| where(:name => /#{q}/i) }
+
   def self.find_by_slug! slug
     where(:slug => slug).first or
       raise Mongoid::Errors::DocumentNotFound.new(self.class, :slug => slug)
