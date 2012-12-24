@@ -15,4 +15,8 @@ group :assets do
   gem 'uglifier'
 end
 
+group :production do
+  gem 'thin'
+end
+
 gem 'pjax_rails'
