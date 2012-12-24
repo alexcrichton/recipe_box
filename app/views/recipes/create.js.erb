@@ -1,7 +1,5 @@
 <% if @recipe.errors.any? %>
-  $('#card .content').html(
-    "<%= escape_javascript render(:template => 'recipes/new.html') %>"
-  );
+  setContent("<%=j render(:template => 'recipes/new.html') %>");
   <%= render 'form_bind' %>
 <% else %>
   <%= render :template => 'recipes/show' %>

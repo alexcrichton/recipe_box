@@ -1,22 +1,19 @@
 class Recipe
   include Mongoid::Document
-  include Mongoid::Search
 
   field :directions
   field :name
   field :slug
 
   embeds_many :ingredients
-  embeds_many :comments
 
-  referenced_in :category
-  referenced_in :user
+  belongs_to :category
 
-  search_in :name, :category => :name, :ingredients => :name
+#   search_in :name, :category => :name, :ingredients => :name
 
   validates_associated :category
-  validates_presence_of :name, :directions, :slug, :user_id
-  validates_uniqueness_of :name, :slug, :scope => :user_id
+  validates_presence_of :name, :directions, :slug
+  validates_uniqueness_of :name, :slug
 
   before_validation :set_slug_from_name
 

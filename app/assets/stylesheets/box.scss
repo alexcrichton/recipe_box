@@ -1,0 +1,303 @@
+@import "compass/css3";
+@import "compass/utilities/text/replacement";
+
+a {
+  color: #966f32;
+
+  &:hover {
+    color: lighten(#966f32, 10%);
+  }
+}
+
+@include font-face(ReenieBeanie, font-files('ReenieBeanie.ttf', truetype));
+
+body {
+  background: none;
+}
+
+html {
+  @include background(linear-gradient(darken(#b5cdcf, 10%), white));
+  background-repeat: repeat-x;
+}
+
+$imgwidth: 392px;
+$imgheight: 397px;
+$width: 800px;
+
+#container {
+  padding: 0;
+  margin: 0 auto;
+  border: none;
+  background: none;
+  position: relative;
+  background-image: image-url('recipeboxfinal.png');
+  background-size: $imgwidth $imgheight;
+  background-repeat: no-repeat;
+  min-height: $imgheight + 100px;
+  background-position: 140px 96px;
+  width: $width;
+}
+
+#name {
+  position: absolute;
+
+  left: 318px;
+  top: 140px;
+  height: 100px;
+  width: 130px;
+  font-family: "ReenieBeanie";
+  font-size: 30px;
+  text-align: center;
+  color: #966f32;
+}
+
+#buttons {
+  position: absolute;
+  left: 285px;
+  top: 350px;
+
+  height: 100px;
+  width: 200px;
+
+  z-index: 10;
+
+  font-family: "ReenieBeanie";
+  font-size: 23px;
+
+  .add, .search, .mine, .myfriends {
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+
+    span {
+      background: white;
+      display: inline-block;
+    }
+  }
+
+  .add, .mine {
+    left: 0;
+    top: 0;
+
+    span {
+      padding: 3px 5px;
+      margin: 20px;
+      @include rotate(-2deg);
+    }
+  }
+
+  .myfriends {
+    background-image: image-url('tape1.png');
+    top: 0;
+    right: 0;
+
+    span {
+      padding: 3px 5px;
+      margin: 10px;
+      @include rotate(2deg);
+    }
+  }
+
+  .add {
+    background-image: image-url('tape1.png');
+    width: 133px;
+    height: 62px;
+  }
+
+  .mine {
+    background-image: image-url('tape1.png');
+    width: 153px;
+    height: 72px;
+
+    span {
+      margin: 10px;
+    }
+  }
+
+  .search {
+    bottom: 0;
+    right: 0;
+
+    background-image: image-url('tape2.png');
+    width: 125px;
+    height: 48px;
+
+    span {
+      margin: 10px 12px;
+      width: 92px;
+      font-size: 120%;
+      text-align: center;
+      @include rotate(-1deg);
+    }
+  }
+}
+
+@mixin card-end {
+  margin-left: 0;
+  left: 50px;
+  top: 50px;
+  z-index: 11;
+  opacity: 1;
+  @include rotate(0);
+}
+
+@mixin card-start {
+  margin-left: 0;
+  left: 25px;
+  top: 75px;
+  opacity: 0;
+  z-index: 0;
+
+  @include transform(scale(0.27) rotate(-4deg));
+}
+
+@mixin card-mid {
+  margin-left: 0;
+  left: 115px;
+  top: -70px;
+  z-index: 11;
+  opacity: 1;
+  @include transform(scale(0.3) rotate(15deg));
+}
+
+@-webkit-keyframes card1 {
+  0% {
+    @include card-start;
+  }
+
+  40% {
+    @include card-mid;
+  }
+
+  100% {
+    @include card-end;
+  }
+}
+
+@-webkit-keyframes card2 {
+  0% {
+    @include card-end;
+  }
+
+  50% {
+    @include card-mid;
+  }
+
+  100% {
+    @include card-start;
+  }
+}
+
+#card {
+  position: absolute;
+  background: white;
+  border: 4px solid #e8c881;
+  display: none;
+  width: 700px;
+  height: 535px;
+
+  overflow: hidden;
+
+  & > .close {
+    display: block;
+    float: right;
+    background-image: image-url('close_button.gif');
+    height: 30px;
+    width: 30px;
+    text-indent: -9999px;
+  }
+
+  &.start {
+    display: block;
+    @include card-end;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: card1;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+  }
+
+  &.end {
+    display: block;
+    @include card-start;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: card2;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+
+    margin-left: -9999em;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .search {
+    #q {
+      font-size: 2em;
+      width: 80%;
+      float: left;
+    }
+  }
+
+  .friends {
+    display: inline-block;
+    width: 15%;
+
+    * {
+      float: left;
+      display: inline-block;
+    }
+
+    input {
+      margin: 18px 10px 0 10px;
+    }
+
+    label {
+      margin-top: 5px;
+      width: 60%;
+    }
+  }
+
+  #results {
+    clear: both;
+
+    .recipe {
+      font-size: 1.6em;
+    }
+  }
+
+  &.loading {
+    @include replace-text('ajax-huge.gif', 300px, 200px);
+  }
+}
+
+#bottom-links {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+h2 a {
+  text-decoration: none;
+}
+
+.new-comment {
+  textarea {
+    width: 500px;
+    height: 100px;
+  }
+}
+
+.scroll {
+  overflow: auto;
+  height: 400px;
+}
+
+.comment {
+  border-top: 1px solid #ccc;
+
+  .credit {
+    color: #888;
+    font-size: 12px;
+  }
+}

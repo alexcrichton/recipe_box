@@ -1,7 +1,1 @@
-showCard();
-
-$('#card .content').html(
-  "<%= escape_javascript render(:template => 'recipes/show.html') %>"
-);
-
-FB.XFBML.parse($('fb:like')[0]);
+setContent("<%=j render(:template => 'recipes/show.html') %>");

@@ -1,17 +1,12 @@
 class RecipesController < ApplicationController
 
   before_filter :set_category_id, :only => [:update, :create]
-
-  before_filter :load_user
-  load_and_authorize_resource :find_by => :slug,
-    :through => [:user, :current_user], :collection => [:search]
+  before_filter :load, :only => [:show, :edit, :destroy]
 
   respond_to :html, :js
 
   def index
-    scope = @user ? @user : current_user
-    @recipes = scope.recipes.order_by(:name.asc).
-        paginate(:page => params[:page], :per_page => 10)
+    @recipes = Recipe.order_by(:name.asc).page(params[:page]).per(10)
 
     respond_with @recipes
   end
@@ -51,6 +46,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @recipe = Recipe.new params[:recipe]
     respond_with @recipe
   end
 
@@ -59,6 +55,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @recipe = Recipe.new(params[:recipe])
     @recipe.save
 
     respond_with @recipe
@@ -85,6 +82,10 @@ class RecipesController < ApplicationController
   end
 
   protected
+
+  def load
+    @recipe = Recipe.where(:slug => params[:id]).first
+  end
 
   def set_category_id
     name = params[:recipe].delete :category_name

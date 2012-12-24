@@ -1,7 +1,3 @@
-showCard();
-
-$('#card .content').html(
-  "<%= escape_javascript render(:template => 'recipes/new.html') %>"
-);
+setContent("<%=j render(:template => 'recipes/new.html') %>");
 
 <%= render 'fancy_form' %>

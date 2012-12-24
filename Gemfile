@@ -1,36 +1,18 @@
 source :rubygems
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.2.9'
 
-gem 'mongoid', '>= 2.0.0.beta'
+gem 'mongoid'
 gem 'bson_ext'
-gem 'mongoid_search'
 
-gem 'cancan'
-gem 'devise'
-gem 'oa-oauth', :require => 'omniauth/oauth'
+gem 'kaminari'
+gem 'redcarpet'
 
-gem 'mini_fb'
-
-gem 'compass'
-gem 'paste', :git => 'git://github.com/alexcrichton/paste.git'
-
-gem 'bluecloth'
-gem 'will_paginate', :git => 'git://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
-
-gem 'pdfkit'
-
-group :development, :test do
-  gem 'heroku'
-
-  gem 'rspec-rails'
+group :assets do
+  gem 'compass-rails'
+  gem 'sass-rails'
+  gem 'jquery-rails'
+  gem 'uglifier'
 end
 
-group :test do
-  gem 'factory_girl_rails'
-  gem 'spork'
-end
-
-group :production do
-  gem 'dalli'
-end
+gem 'pjax_rails'

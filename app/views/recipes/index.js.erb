@@ -1,3 +1,1 @@
-showCard();
-
-$('#card .content').html("<%= escape_javascript render(:template => 'recipes/index.html') %>");
+setContent("<%=j render(:template => 'recipes/index.html') %>");

@@ -1,5 +1,6 @@
 defaults: &defaults
-  host: localhost
+  hosts:
+    - localhost
   # slaves:
   #   - host: slave1.local
   #     port: 27018
@@ -7,13 +8,12 @@ defaults: &defaults
   #     port: 27019
 
 development:
-  <<: *defaults
-  database: recipe_box_development
+  sessions:
+    default:
+      database: app268103
+      <<: *defaults
 
-test:
-  <<: *defaults
-  database: recipe_box_test
-
-# set these environment variables on your prod server
 production:
-  uri: <%= ENV['MONGOHQ_URL'] %>
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>

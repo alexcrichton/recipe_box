@@ -2,11 +2,7 @@
 
 <h2 class='recipe'>
   <%= @recipe.name %>
-  <% if can? :update, @recipe %>
-    <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
-  <% end %>
-
-  <fb:like href='<%= polymorphic_url [@recipe.user, @recipe] %>' layout='button_count'/>
+  <%= link_to '[edit]', [:edit, @recipe], :remote => true %>
 </h2>
 
 <div class='scroll'>
@@ -25,27 +21,9 @@
 </div>
 
 <div id='bottom-links'>
-  <%= link_to 'Download',
-          polymorphic_path([@user, @recipe], :format => 'pdf') %> |
+  <%= link_to 'Remove Recipe', @recipe, :method => :delete, :remote => true,
+        :confirm => 'Are you sure?' %> |
 
-  <% if can? :comment, @recipe %>
-    <%= link_to pluralize(@recipe.comments.count, 'Comment'),
-          [@user, @recipe, :comments], :remote => true %> |
-  <% end %>
-
-  <% if can? :destroy, @recipe %>
-    <%= link_to 'Remove Recipe', @recipe, :method => :delete, :remote => true,
-          :confirm => 'Are you sure?' %> |
-  <% end %>
-
-  <% if can? :create, @user ? @user.recipes.build : Recipe %>
-    <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
-  <% end %>
-
-  <% if @user %>
-    <%= link_to "All of #{@user.first_name}'s recipes", [@user, :recipes],
-          :remote => true %>
-  <% else %>
-    <%= link_to 'All Your Recipes', recipes_path, :remote => true %>
-  <% end %>
+  <%= link_to 'Add Recipe', new_recipe_path, :remote => true %> |
+  <%= link_to 'All Recipes', recipes_path, :remote => true %>
 </div>
